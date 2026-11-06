@@ -24,22 +24,21 @@ content:
         required: true
         options:
           values:
-            - "Bongs"
-            - "Pipas"
-            - "Destilados"
-            - "Baterías para destilados"
-            - "Gomitas comestibles"
-            - "Cueros"
-            - "Rascadores"
-            - "Encendedores y sopletes"
-            - "Palas y tarros para sople"
-            - "Antiolores y filtros"
-            - "Ceniceros"
-            - "Bandejas"
+            - "Mini bongs"
+            - "Destilado nacional"
+            - "Destilado importado"
+            - "Gomitas mágicas"
+            - "Palas dosificadoras"
             - "Armadores"
-            - "Vapers de nicotina"
+            - "Rascadores"
             - "Lentes de contacto"
-            - "Joyería para piercings"
+            - "Filtros"
+            - "Bandejas"
+            - "Crema para tatuajes"
+            - "Cueros"
+            - "Vaper nicotina"
+            - "Pipas"
+            - "Baterías para destilados"
       - name: descripcion
         label: Descripción corta
         type: text

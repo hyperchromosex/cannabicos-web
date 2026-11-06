@@ -1,122 +1,50 @@
 [
   {
-    "nombre": "Destilado nacional",
-    "categoria": "Destilados",
-    "descripcion": "Destilado nacional, varias cepas disponibles: sativa, índica o híbrida",
-    "precio": 35000,
-    "foto": "/img/productos/96273.jpg",
+    "nombre": "Mini bong de vidrio",
+    "categoria": "Mini bongs",
+    "descripcion": "Vidrio grueso, fácil de llevar.",
+    "precio": 95000,
+    "foto": "",
     "visible": true
   },
   {
-    "nombre": "Bong de silicona irrompible",
-    "categoria": "Bongs",
-    "descripcion": "Ideal para viaje, varios colores.",
-    "precio": 65000,
-    "visible": true
-  },
-  {
-    "nombre": "Pipa de vidrio artesanal",
-    "categoria": "Pipas",
-    "descripcion": "Diseños únicos hechos a mano.",
-    "precio": 45000,
-    "visible": true
-  },
-  {
-    "nombre": "Pipa de madera",
-    "categoria": "Pipas",
-    "descripcion": "Clásica y resistente.",
-    "precio": 35000,
+    "nombre": "Mini bong de silicona",
+    "categoria": "Mini bongs",
+    "descripcion": "Irrompible, varios colores.",
+    "precio": 55000,
+    "foto": "",
     "visible": true
   },
   {
     "nombre": "Destilado nacional",
-    "categoria": "Destilados",
+    "categoria": "Destilado nacional",
     "descripcion": "Pregunta por sabores disponibles.",
     "precio": 90000,
+    "foto": "",
     "visible": true
   },
   {
     "nombre": "Destilado importado",
-    "categoria": "Destilados",
+    "categoria": "Destilado importado",
     "descripcion": "Pregunta por marcas disponibles.",
     "precio": 140000,
+    "foto": "",
     "visible": true
   },
   {
-    "nombre": "Batería 510 recargable",
-    "categoria": "Baterías para destilados",
-    "descripcion": "Voltaje ajustable, carga USB-C.",
-    "precio": 45000,
-    "visible": true
-  },
-  {
-    "nombre": "Gomitas comestibles",
-    "categoria": "Gomitas comestibles",
+    "nombre": "Gomitas mágicas",
+    "categoria": "Gomitas mágicas",
     "descripcion": "Varios sabores. Solo mayores de 18.",
     "precio": 40000,
+    "foto": "",
     "visible": true
   },
   {
-    "nombre": "Cueros king size",
-    "categoria": "Cueros",
-    "descripcion": "Papel delgado de combustión lenta.",
-    "precio": 6000,
-    "visible": true
-  },
-  {
-    "nombre": "Rascador metálico 4 piezas",
-    "categoria": "Rascadores",
-    "descripcion": "Dientes afilados y recolector de polen.",
-    "precio": 38000,
-    "visible": true
-  },
-  {
-    "nombre": "Soplete recargable",
-    "categoria": "Encendedores y sopletes",
-    "descripcion": "Llama tipo jet, regulable.",
-    "precio": 32000,
-    "visible": true
-  },
-  {
-    "nombre": "Encendedor clásico",
-    "categoria": "Encendedores y sopletes",
-    "descripcion": "Varios diseños.",
-    "precio": 4000,
-    "visible": true
-  },
-  {
-    "nombre": "Kit de palas y tarro",
-    "categoria": "Palas y tarros para sople",
-    "descripcion": "Acero inoxidable + tarro de silicona.",
-    "precio": 25000,
-    "visible": true
-  },
-  {
-    "nombre": "Spray antiolor",
-    "categoria": "Antiolores y filtros",
-    "descripcion": "Neutraliza olores al instante.",
-    "precio": 22000,
-    "visible": true
-  },
-  {
-    "nombre": "Filtros / tips de cartón",
-    "categoria": "Antiolores y filtros",
-    "descripcion": "Libretas de filtros.",
-    "precio": 3000,
-    "visible": true
-  },
-  {
-    "nombre": "Cenicero de cerámica",
-    "categoria": "Ceniceros",
-    "descripcion": "Diseños psicodélicos.",
-    "precio": 28000,
-    "visible": true
-  },
-  {
-    "nombre": "Bandeja metálica ilustrada",
-    "categoria": "Bandejas",
-    "descripcion": "Tamaño mediano.",
-    "precio": 35000,
+    "nombre": "Kit de palas dosificadoras",
+    "categoria": "Palas dosificadoras",
+    "descripcion": "Acero inoxidable, varias medidas.",
+    "precio": 18000,
+    "foto": "",
     "visible": true
   },
   {
@@ -124,13 +52,15 @@
     "categoria": "Armadores",
     "descripcion": "Arma perfecto en segundos.",
     "precio": 15000,
+    "foto": "",
     "visible": true
   },
   {
-    "nombre": "Vaper desechable",
-    "categoria": "Vapers de nicotina",
-    "descripcion": "Contiene nicotina. Solo mayores de 18.",
-    "precio": 48000,
+    "nombre": "Rascador metálico 4 piezas",
+    "categoria": "Rascadores",
+    "descripcion": "Dientes afilados y recolector de polen.",
+    "precio": 38000,
+    "foto": "",
     "visible": true
   },
   {
@@ -138,20 +68,71 @@
     "categoria": "Lentes de contacto",
     "descripcion": "Varios tonos. Pregunta disponibilidad.",
     "precio": 70000,
+    "foto": "",
     "visible": true
   },
   {
-    "nombre": "Argolla de titanio",
-    "categoria": "Joyería para piercings",
-    "descripcion": "Para nariz, oreja y más.",
+    "nombre": "Filtros / tips de cartón",
+    "categoria": "Filtros",
+    "descripcion": "Libretas de filtros.",
+    "precio": 3000,
+    "foto": "",
+    "visible": true
+  },
+  {
+    "nombre": "Bandeja metálica ilustrada",
+    "categoria": "Bandejas",
+    "descripcion": "Tamaño mediano.",
+    "precio": 35000,
+    "foto": "",
+    "visible": true
+  },
+  {
+    "nombre": "Crema para tatuajes",
+    "categoria": "Crema para tatuajes",
+    "descripcion": "Hidrata y protege tu tatuaje.",
     "precio": 25000,
+    "foto": "",
     "visible": true
   },
   {
-    "nombre": "Barra para ombligo",
-    "categoria": "Joyería para piercings",
-    "descripcion": "Acero quirúrgico.",
-    "precio": 30000,
+    "nombre": "Cueros king size",
+    "categoria": "Cueros",
+    "descripcion": "Papel delgado de combustión lenta.",
+    "precio": 6000,
+    "foto": "",
+    "visible": true
+  },
+  {
+    "nombre": "Vaper desechable",
+    "categoria": "Vaper nicotina",
+    "descripcion": "Contiene nicotina. Solo mayores de 18.",
+    "precio": 48000,
+    "foto": "",
+    "visible": true
+  },
+  {
+    "nombre": "Pipa de vidrio artesanal",
+    "categoria": "Pipas",
+    "descripcion": "Diseños únicos hechos a mano.",
+    "precio": 45000,
+    "foto": "",
+    "visible": true
+  },
+  {
+    "nombre": "Pipa de madera",
+    "categoria": "Pipas",
+    "descripcion": "Clásica y resistente.",
+    "precio": 35000,
+    "foto": "",
+    "visible": true
+  },
+  {
+    "nombre": "Batería 510 recargable",
+    "categoria": "Baterías para destilados",
+    "descripcion": "Voltaje ajustable, carga USB-C.",
+    "precio": 45000,
+    "foto": "",
     "visible": true
   }
 ]

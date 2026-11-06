@@ -1,19 +1,20 @@
 /* =========================================================
    CANNABICOS · Estilos
-   Paleta de la marca: verde (principal), cafés y beige (fondos), naranja (detalles)
+   Paleta de la marca (definida por Cannabicos): verde oscuro #1B5E20, verde claro #70C03A,
+   naranja (detalles), beige #F3EFEA y cafés de fondo
    (cambia los colores aquí y se actualiza toda la página)
    ========================================================= */
 :root {
   --cafe-oscuro: #3a2418;
   --cafe: #6b4430;
   --cafe-claro: #a9805f;
-  --beige: #f1e7d6;
-  --beige-2: #e6d6bc;
-  --verde: #4a8a56;
-  --verde-oscuro: #2d5a36;
-  --verde-claro: #9cc4a3;
-  --naranja: #d4733a;
-  --naranja-claro: #e8a46c;
+  --beige: #F3EFEA;
+  --beige-2: #E7DED3;
+  --verde: #1B5E20;
+  --verde-oscuro: #1B5E20;
+  --verde-claro: #70C03A;
+  --naranja: #F38332; /* OJO: confirmar el código exacto del naranja */
+  --naranja-claro: #F7A86E;
   --verde-logo: #5d9a69;
   --tinta: #2a1a11;
 
@@ -174,15 +175,15 @@ h2 { font-size: clamp(2.4rem, 6vw, 4rem); color: var(--cafe-oscuro); text-shadow
 .emblem .ring-line { fill: none; stroke: var(--cafe-oscuro); stroke-width: 3; }
 .emblem .ring-line-thick { fill: none; stroke: var(--tinta); stroke-width: 6; }
 .emblem .ring-text { transform-origin: 200px 200px; animation: spin 40s linear infinite; }
-.emblem .ring-text text { font-family: var(--font-mono); font-size: 19px; fill: var(--cafe-oscuro); letter-spacing: 2px; }
+.emblem .ring-text text { font-family: var(--font-mono); font-size: 19px; fill: var(--beige); letter-spacing: 2px; }
 .emblem .disc-dark { fill: var(--cafe-oscuro); }
 .emblem .rays { transform-origin: 200px 200px; animation: spin 60s linear infinite reverse; }
 .emblem .rays path { fill: var(--cafe); }
 .emblem .disc-center { fill: var(--beige); stroke: var(--tinta); stroke-width: 6; }
 .emblem .ring-dash { fill: none; stroke: var(--naranja); stroke-width: 3; stroke-dasharray: 2 10; stroke-linecap: round; }
 .emblem .leaf { transform-origin: 200px 236px; animation: sway 4s ease-in-out infinite; }
-.emblem .leaflet { fill: var(--verde); stroke: var(--tinta); stroke-width: 4; stroke-linejoin: round; }
-.emblem .vein { stroke: var(--beige); stroke-width: 2.5; stroke-linecap: round; opacity: .85; }
+.emblem .leaflet { fill: var(--verde-claro); stroke: var(--tinta); stroke-width: 4; stroke-linejoin: round; }
+.emblem .vein { stroke: var(--verde-oscuro); stroke-width: 2.5; stroke-linecap: round; opacity: .85; }
 .emblem .stem { fill: none; stroke: var(--tinta); stroke-width: 6; stroke-linecap: round; }
 .emblem .smoke path { fill: none; stroke: var(--beige-2); stroke-width: 6; stroke-linecap: round; opacity: .7; animation: drift 4s ease-in-out infinite; }
 .emblem .sparkle path { fill: var(--beige); stroke: var(--tinta); stroke-width: 3; }
@@ -429,3 +430,5 @@ h2 { font-size: clamp(2.4rem, 6vw, 4rem); color: var(--cafe-oscuro); text-shadow
 }
 
 .product-grid .empty { grid-column: 1 / -1; color: var(--beige); }
+
+.about-cierre { font-family: var(--font-ui); font-weight: 600; font-size: 1.2rem; color: var(--verde-oscuro); }

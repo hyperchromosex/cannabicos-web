@@ -10,22 +10,21 @@ const WHATSAPP = "573244259048"; // número con indicativo de Colombia (57)
 
 /* ---------- Categorías ---------- */
 const CATEGORIAS = [
-  { id: "bongs",       nombre: "Bongs" },
-  { id: "pipas",       nombre: "Pipas" },
-  { id: "destilados",  nombre: "Destilados" },
-  { id: "baterias",    nombre: "Baterías para destilados" },
-  { id: "gomitas",     nombre: "Gomitas comestibles" },
-  { id: "cueros",      nombre: "Cueros" },
-  { id: "rascadores",  nombre: "Rascadores" },
-  { id: "encendedores",nombre: "Encendedores y sopletes" },
-  { id: "palas",       nombre: "Palas y tarros para sople" },
-  { id: "antiolores",  nombre: "Antiolores y filtros" },
-  { id: "ceniceros",   nombre: "Ceniceros" },
-  { id: "bandejas",    nombre: "Bandejas" },
-  { id: "armadores",   nombre: "Armadores" },
-  { id: "vapers",      nombre: "Vapers de nicotina" },
-  { id: "lentes",      nombre: "Lentes de contacto" },
-  { id: "piercings",   nombre: "Joyería para piercings" },
+  { id: "minibongs",            nombre: "Mini bongs" },
+  { id: "destilado-nacional",   nombre: "Destilado nacional" },
+  { id: "destilado-importado",  nombre: "Destilado importado" },
+  { id: "gomitas",              nombre: "Gomitas mágicas" },
+  { id: "palas",                nombre: "Palas dosificadoras" },
+  { id: "armadores",            nombre: "Armadores" },
+  { id: "rascadores",           nombre: "Rascadores" },
+  { id: "lentes",               nombre: "Lentes de contacto" },
+  { id: "filtros",              nombre: "Filtros" },
+  { id: "bandejas",             nombre: "Bandejas" },
+  { id: "crema-tatuajes",       nombre: "Crema para tatuajes" },
+  { id: "cueros",               nombre: "Cueros" },
+  { id: "vapers",               nombre: "Vaper nicotina" },
+  { id: "pipas",                nombre: "Pipas" },
+  { id: "baterias",             nombre: "Baterías para destilados" },
 ];
 
 
