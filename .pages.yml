@@ -1,0 +1,59 @@
+# Configuración del panel de Pages CMS (pagescms.org)
+# Define qué puede editar tu hermana desde el panel.
+
+media:
+  input: img/productos
+  output: /img/productos
+  extensions: [jpg, jpeg, png, webp]
+
+content:
+  - name: productos
+    label: Productos
+    type: file
+    path: productos.json
+    format: json
+    list: true
+    fields:
+      - name: nombre
+        label: Nombre del producto
+        type: string
+        required: true
+      - name: categoria
+        label: Categoría
+        type: select
+        required: true
+        options:
+          values:
+            - "Bongs"
+            - "Pipas"
+            - "Destilados"
+            - "Baterías para destilados"
+            - "Gomitas comestibles"
+            - "Cueros"
+            - "Rascadores"
+            - "Encendedores y sopletes"
+            - "Palas y tarros para sople"
+            - "Antiolores y filtros"
+            - "Ceniceros"
+            - "Bandejas"
+            - "Armadores"
+            - "Vapers de nicotina"
+            - "Lentes de contacto"
+            - "Joyería para piercings"
+      - name: descripcion
+        label: Descripción corta
+        type: text
+        options:
+          maxlength: 160
+      - name: precio
+        label: Precio en pesos (vacío = "Consultar precio")
+        type: number
+        options:
+          min: 0
+      - name: foto
+        label: Foto
+        type: image
+      - name: visible
+        label: Mostrar en la página
+        type: boolean
+        default: true

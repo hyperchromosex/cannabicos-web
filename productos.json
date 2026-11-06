@@ -1,0 +1,178 @@
+[
+  {
+    "nombre": "Bong de vidrio 30 cm",
+    "categoria": "Bongs",
+    "descripcion": "Vidrio grueso con percolador.",
+    "precio": 180000,
+    "foto": "",
+    "visible": true
+  },
+  {
+    "nombre": "Bong de silicona irrompible",
+    "categoria": "Bongs",
+    "descripcion": "Ideal para viaje, varios colores.",
+    "precio": 65000,
+    "foto": "",
+    "visible": true
+  },
+  {
+    "nombre": "Pipa de vidrio artesanal",
+    "categoria": "Pipas",
+    "descripcion": "Diseños únicos hechos a mano.",
+    "precio": 45000,
+    "foto": "",
+    "visible": true
+  },
+  {
+    "nombre": "Pipa de madera",
+    "categoria": "Pipas",
+    "descripcion": "Clásica y resistente.",
+    "precio": 35000,
+    "foto": "",
+    "visible": true
+  },
+  {
+    "nombre": "Destilado nacional",
+    "categoria": "Destilados",
+    "descripcion": "Pregunta por sabores disponibles.",
+    "precio": 90000,
+    "foto": "",
+    "visible": true
+  },
+  {
+    "nombre": "Destilado importado",
+    "categoria": "Destilados",
+    "descripcion": "Pregunta por marcas disponibles.",
+    "precio": 140000,
+    "foto": "",
+    "visible": true
+  },
+  {
+    "nombre": "Batería 510 recargable",
+    "categoria": "Baterías para destilados",
+    "descripcion": "Voltaje ajustable, carga USB-C.",
+    "precio": 45000,
+    "foto": "",
+    "visible": true
+  },
+  {
+    "nombre": "Gomitas comestibles",
+    "categoria": "Gomitas comestibles",
+    "descripcion": "Varios sabores. Solo mayores de 18.",
+    "precio": 40000,
+    "foto": "",
+    "visible": true
+  },
+  {
+    "nombre": "Cueros king size",
+    "categoria": "Cueros",
+    "descripcion": "Papel delgado de combustión lenta.",
+    "precio": 6000,
+    "foto": "",
+    "visible": true
+  },
+  {
+    "nombre": "Rascador metálico 4 piezas",
+    "categoria": "Rascadores",
+    "descripcion": "Dientes afilados y recolector de polen.",
+    "precio": 38000,
+    "foto": "",
+    "visible": true
+  },
+  {
+    "nombre": "Soplete recargable",
+    "categoria": "Encendedores y sopletes",
+    "descripcion": "Llama tipo jet, regulable.",
+    "precio": 32000,
+    "foto": "",
+    "visible": true
+  },
+  {
+    "nombre": "Encendedor clásico",
+    "categoria": "Encendedores y sopletes",
+    "descripcion": "Varios diseños.",
+    "precio": 4000,
+    "foto": "",
+    "visible": true
+  },
+  {
+    "nombre": "Kit de palas y tarro",
+    "categoria": "Palas y tarros para sople",
+    "descripcion": "Acero inoxidable + tarro de silicona.",
+    "precio": 25000,
+    "foto": "",
+    "visible": true
+  },
+  {
+    "nombre": "Spray antiolor",
+    "categoria": "Antiolores y filtros",
+    "descripcion": "Neutraliza olores al instante.",
+    "precio": 22000,
+    "foto": "",
+    "visible": true
+  },
+  {
+    "nombre": "Filtros / tips de cartón",
+    "categoria": "Antiolores y filtros",
+    "descripcion": "Libretas de filtros.",
+    "precio": 3000,
+    "foto": "",
+    "visible": true
+  },
+  {
+    "nombre": "Cenicero de cerámica",
+    "categoria": "Ceniceros",
+    "descripcion": "Diseños psicodélicos.",
+    "precio": 28000,
+    "foto": "",
+    "visible": true
+  },
+  {
+    "nombre": "Bandeja metálica ilustrada",
+    "categoria": "Bandejas",
+    "descripcion": "Tamaño mediano.",
+    "precio": 35000,
+    "foto": "",
+    "visible": true
+  },
+  {
+    "nombre": "Armador manual",
+    "categoria": "Armadores",
+    "descripcion": "Arma perfecto en segundos.",
+    "precio": 15000,
+    "foto": "",
+    "visible": true
+  },
+  {
+    "nombre": "Vaper desechable",
+    "categoria": "Vapers de nicotina",
+    "descripcion": "Contiene nicotina. Solo mayores de 18.",
+    "precio": 48000,
+    "foto": "",
+    "visible": true
+  },
+  {
+    "nombre": "Lentes de color",
+    "categoria": "Lentes de contacto",
+    "descripcion": "Varios tonos. Pregunta disponibilidad.",
+    "precio": 70000,
+    "foto": "",
+    "visible": true
+  },
+  {
+    "nombre": "Argolla de titanio",
+    "categoria": "Joyería para piercings",
+    "descripcion": "Para nariz, oreja y más.",
+    "precio": 25000,
+    "foto": "",
+    "visible": true
+  },
+  {
+    "nombre": "Barra para ombligo",
+    "categoria": "Joyería para piercings",
+    "descripcion": "Acero quirúrgico.",
+    "precio": 30000,
+    "foto": "",
+    "visible": true
+  }
+]

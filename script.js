@@ -1,16 +1,12 @@
 /* =========================================================
    CANNABICOS · Lógica de la página
    ---------------------------------------------------------
-   Los productos se leen de la hoja de Google Sheets (HOJA_CSV).
-   Si HOJA_CSV está vacío, se usan los PRODUCTOS de ejemplo de abajo.
+   Los productos se editan desde el panel (Pages CMS) y se guardan
+   en productos.json. Las categorías se cambian aquí abajo.
    ========================================================= */
 
 const WHATSAPP = "573244259048"; // número con indicativo de Colombia (57)
 
-/* Enlace de la hoja publicada como CSV
-   (Archivo → Compartir → Publicar en la web → pestaña Productos → CSV).
-   Déjalo vacío ("") para usar los productos de ejemplo. */
-const HOJA_CSV = "https://docs.google.com/spreadsheets/d/e/2PACX-1vTTRS_HGy1_Dkzx1eFbHskeBQQIMqBdS7w5uxmIldMt3uHt39mR0_zBbvqVnZEKqA/pub?gid=251208778&single=true&output=csv";
 
 /* ---------- Categorías ---------- */
 const CATEGORIAS = [
@@ -32,35 +28,7 @@ const CATEGORIAS = [
   { id: "piercings",   nombre: "Joyería para piercings" },
 ];
 
-/* ---------- Productos de EJEMPLO ----------
-   Reemplaza por los productos reales. OJO: los precios son INVENTADOS, solo para ver cómo se ven.
-   - precio: número en pesos (ej. 45000) o null para "Consultar precio"
-   - foto: ruta a la imagen (ej. "img/productos/bong-azul.jpg") o "" para mostrar el logo mientras tanto
-*/
-const PRODUCTOS = [
-  { nombre: "Bong de vidrio 30 cm",          cat: "bongs",        desc: "Vidrio grueso con percolador.",           precio: 180000, foto: "" },
-  { nombre: "Bong de silicona irrompible",   cat: "bongs",        desc: "Ideal para viaje, varios colores.",       precio: 65000, foto: "" },
-  { nombre: "Pipa de vidrio artesanal",      cat: "pipas",        desc: "Diseños únicos hechos a mano.",            precio: 45000, foto: "" },
-  { nombre: "Pipa de madera",                cat: "pipas",        desc: "Clásica y resistente.",                    precio: 35000, foto: "" },
-  { nombre: "Destilado nacional",            cat: "destilados",   desc: "Pregunta por sabores disponibles.",        precio: 90000, foto: "" },
-  { nombre: "Destilado importado",           cat: "destilados",   desc: "Pregunta por marcas disponibles.",         precio: 140000, foto: "" },
-  { nombre: "Batería 510 recargable",        cat: "baterias",     desc: "Voltaje ajustable, carga USB-C.",          precio: 45000, foto: "" },
-  { nombre: "Gomitas comestibles",           cat: "gomitas",      desc: "Varios sabores. Solo mayores de 18.",      precio: 40000, foto: "" },
-  { nombre: "Cueros king size",              cat: "cueros",       desc: "Papel delgado de combustión lenta.",       precio: 6000, foto: "" },
-  { nombre: "Rascador metálico 4 piezas",    cat: "rascadores",   desc: "Dientes afilados y recolector de polen.",  precio: 38000, foto: "" },
-  { nombre: "Soplete recargable",            cat: "encendedores", desc: "Llama tipo jet, regulable.",               precio: 32000, foto: "" },
-  { nombre: "Encendedor clásico",            cat: "encendedores", desc: "Varios diseños.",                          precio: 4000, foto: "" },
-  { nombre: "Kit de palas y tarro",          cat: "palas",        desc: "Acero inoxidable + tarro de silicona.",    precio: 25000, foto: "" },
-  { nombre: "Spray antiolor",                cat: "antiolores",   desc: "Neutraliza olores al instante.",           precio: 22000, foto: "" },
-  { nombre: "Filtros / tips de cartón",      cat: "antiolores",   desc: "Libretas de filtros.",                     precio: 3000, foto: "" },
-  { nombre: "Cenicero de cerámica",          cat: "ceniceros",    desc: "Diseños psicodélicos.",                    precio: 28000, foto: "" },
-  { nombre: "Bandeja metálica ilustrada",    cat: "bandejas",     desc: "Tamaño mediano.",                          precio: 35000, foto: "" },
-  { nombre: "Armador manual",                cat: "armadores",    desc: "Arma perfecto en segundos.",               precio: 15000, foto: "" },
-  { nombre: "Vaper desechable",              cat: "vapers",       desc: "Contiene nicotina. Solo mayores de 18.",   precio: 48000, foto: "" },
-  { nombre: "Lentes de color",               cat: "lentes",       desc: "Varios tonos. Pregunta disponibilidad.",   precio: 70000, foto: "" },
-  { nombre: "Argolla de titanio",            cat: "piercings",    desc: "Para nariz, oreja y más.",                 precio: 25000, foto: "" },
-  { nombre: "Barra para ombligo",            cat: "piercings",    desc: "Acero quirúrgico.",                        precio: 30000, foto: "" },
-];
+
 
 /* ================= No hace falta editar debajo de esta línea ================= */
 
@@ -142,7 +110,7 @@ function pintarProductos() {
     const cat = catPorId[p.cat] || { nombre: "" };
     const logo = `<img class="ph-logo" src="img/logo.png" alt="" aria-hidden="true">`;
     const imagen = p.foto
-      ? `<img src="${escapar(p.foto)}" alt="${escapar(p.nombre)}" loading="lazy" onerror="this.replaceWith(Object.assign(document.createElement('img'),{className:'ph-logo',src:'img/logo.png',alt:''}))">`
+      ? `<img class="foto" src="${escapar(p.foto)}" alt="${escapar(p.nombre)}" loading="lazy">`
       : logo;
     const precio = p.precio ? formatoPeso(p.precio) : "Consultar precio";
     const msg = `¡Hola Cannabicos! 👋 Me interesa: ${p.nombre}. ¿Lo tienen disponible?`;
@@ -175,32 +143,11 @@ function pintarProductos() {
   });
 })();
 
-/* ---------- Lectura de la hoja de Google Sheets ---------- */
-function parsearCSV(texto) {
-  const filas = []; let fila = []; let campo = ""; let comillas = false;
-  for (let i = 0; i < texto.length; i++) {
-    const c = texto[i];
-    if (comillas) {
-      if (c === '"' && texto[i + 1] === '"') { campo += '"'; i++; }
-      else if (c === '"') comillas = false;
-      else campo += c;
-    } else if (c === '"') comillas = true;
-    else if (c === ",") { fila.push(campo); campo = ""; }
-    else if (c === "\n" || c === "\r") {
-      if (c === "\r" && texto[i + 1] === "\n") i++;
-      fila.push(campo); filas.push(fila); fila = []; campo = "";
-    } else campo += c;
-  }
-  if (campo || fila.length) { fila.push(campo); filas.push(fila); }
-  return filas;
-}
-
-// Convierte un enlace de Google Drive en un enlace de imagen que la página puede mostrar
-function fotoDesdeEnlace(url) {
+/* ---------- Lectura de productos.json (lo edita el panel) ---------- */
+function rutaFoto(url) {
   url = String(url || "").trim();
   if (!url) return "";
-  const m = url.match(/drive\.google\.com\/(?:file\/d\/|open\?id=|uc\?(?:export=\w+&)?id=)([\w-]+)/);
-  if (m) return `https://drive.google.com/thumbnail?id=${m[1]}&sz=w800`;
+  if (url.startsWith("/")) return url.slice(1);           // "/img/productos/x.jpg" → "img/productos/x.jpg"
   return /^https?:\/\//.test(url) || url.startsWith("img/") ? url : "";
 }
 
@@ -211,30 +158,37 @@ function buscarCategoria(valor) {
 }
 
 async function cargarProductos() {
-  if (!HOJA_CSV) { productos = PRODUCTOS; pintarProductos(); return; }
   $("#productGrid").innerHTML = `<p class="empty">Cargando productos…</p>`;
   try {
-    const resp = await fetch(HOJA_CSV, { cache: "no-store" });
+    const resp = await fetch("productos.json", { cache: "no-cache" });
     if (!resp.ok) throw new Error("HTTP " + resp.status);
-    const [encabezados, ...filas] = parsearCSV(await resp.text());
-    const col = Object.fromEntries(encabezados.map((h, i) => [normalizar(h), i]));
-    const dato = (fila, nombre) => (fila[col[nombre]] ?? "").trim();
-    productos = filas
-      .filter((f) => dato(f, "nombre") && !["no", "n", "false", "0"].includes(normalizar(dato(f, "mostrar"))))
-      .map((f) => ({
-        nombre: dato(f, "nombre"),
-        cat: buscarCategoria(dato(f, "categoria")),
-        desc: dato(f, "descripcion"),
-        precio: parseInt(dato(f, "precio").replace(/[^\d]/g, ""), 10) || null,
-        foto: fotoDesdeEnlace(dato(f, "foto")),
+    const datos = await resp.json();
+    productos = (Array.isArray(datos) ? datos : [])
+      .filter((p) => p && p.nombre && p.visible !== false)
+      .map((p) => ({
+        nombre: String(p.nombre),
+        cat: buscarCategoria(p.categoria),
+        desc: String(p.descripcion || ""),
+        precio: Number(p.precio) > 0 ? Math.round(Number(p.precio)) : null,
+        foto: rutaFoto(p.foto),
       }));
     pintarProductos();
   } catch (err) {
-    console.error("No se pudo leer la hoja de productos:", err);
+    console.error("No se pudo leer productos.json:", err);
     $("#emptyMsg").hidden = true;
     $("#productGrid").innerHTML = `<p class="empty">No pudimos cargar el catálogo en este momento. ¡Escríbenos por WhatsApp y te ayudamos!</p>`;
   }
 }
+
+// Si una foto no carga, se muestra el logo en su lugar
+$("#productGrid").addEventListener("error", (e) => {
+  const img = e.target;
+  if (img.tagName === "IMG" && img.classList.contains("foto")) {
+    img.classList.replace("foto", "ph-logo");
+    img.alt = "";
+    img.src = "img/logo.png";
+  }
+}, true);
 
 $("#year").textContent = new Date().getFullYear();
 pintarCategorias();
