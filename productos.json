@@ -3,8 +3,8 @@
     "nombre": "Bong de vidrio 30 cm",
     "categoria": "Bongs",
     "descripcion": "Vidrio grueso con percolador.",
-    "precio": 180000,
-    "foto": "",
+    "precio": 139987,
+    "foto": "/img/productos/Flower Overlay.jpg",
     "visible": true
   },
   {
@@ -12,7 +12,6 @@
     "categoria": "Bongs",
     "descripcion": "Ideal para viaje, varios colores.",
     "precio": 65000,
-    "foto": "",
     "visible": true
   },
   {
@@ -20,7 +19,6 @@
     "categoria": "Pipas",
     "descripcion": "Diseños únicos hechos a mano.",
     "precio": 45000,
-    "foto": "",
     "visible": true
   },
   {
@@ -28,7 +26,6 @@
     "categoria": "Pipas",
     "descripcion": "Clásica y resistente.",
     "precio": 35000,
-    "foto": "",
     "visible": true
   },
   {
@@ -36,7 +33,6 @@
     "categoria": "Destilados",
     "descripcion": "Pregunta por sabores disponibles.",
     "precio": 90000,
-    "foto": "",
     "visible": true
   },
   {
@@ -44,7 +40,6 @@
     "categoria": "Destilados",
     "descripcion": "Pregunta por marcas disponibles.",
     "precio": 140000,
-    "foto": "",
     "visible": true
   },
   {
@@ -52,7 +47,6 @@
     "categoria": "Baterías para destilados",
     "descripcion": "Voltaje ajustable, carga USB-C.",
     "precio": 45000,
-    "foto": "",
     "visible": true
   },
   {
@@ -60,7 +54,6 @@
     "categoria": "Gomitas comestibles",
     "descripcion": "Varios sabores. Solo mayores de 18.",
     "precio": 40000,
-    "foto": "",
     "visible": true
   },
   {
@@ -68,7 +61,6 @@
     "categoria": "Cueros",
     "descripcion": "Papel delgado de combustión lenta.",
     "precio": 6000,
-    "foto": "",
     "visible": true
   },
   {
@@ -76,7 +68,6 @@
     "categoria": "Rascadores",
     "descripcion": "Dientes afilados y recolector de polen.",
     "precio": 38000,
-    "foto": "",
     "visible": true
   },
   {
@@ -84,7 +75,6 @@
     "categoria": "Encendedores y sopletes",
     "descripcion": "Llama tipo jet, regulable.",
     "precio": 32000,
-    "foto": "",
     "visible": true
   },
   {
@@ -92,7 +82,6 @@
     "categoria": "Encendedores y sopletes",
     "descripcion": "Varios diseños.",
     "precio": 4000,
-    "foto": "",
     "visible": true
   },
   {
@@ -100,7 +89,6 @@
     "categoria": "Palas y tarros para sople",
     "descripcion": "Acero inoxidable + tarro de silicona.",
     "precio": 25000,
-    "foto": "",
     "visible": true
   },
   {
@@ -108,7 +96,6 @@
     "categoria": "Antiolores y filtros",
     "descripcion": "Neutraliza olores al instante.",
     "precio": 22000,
-    "foto": "",
     "visible": true
   },
   {
@@ -116,7 +103,6 @@
     "categoria": "Antiolores y filtros",
     "descripcion": "Libretas de filtros.",
     "precio": 3000,
-    "foto": "",
     "visible": true
   },
   {
@@ -124,7 +110,6 @@
     "categoria": "Ceniceros",
     "descripcion": "Diseños psicodélicos.",
     "precio": 28000,
-    "foto": "",
     "visible": true
   },
   {
@@ -132,7 +117,6 @@
     "categoria": "Bandejas",
     "descripcion": "Tamaño mediano.",
     "precio": 35000,
-    "foto": "",
     "visible": true
   },
   {
@@ -140,7 +124,6 @@
     "categoria": "Armadores",
     "descripcion": "Arma perfecto en segundos.",
     "precio": 15000,
-    "foto": "",
     "visible": true
   },
   {
@@ -148,7 +131,6 @@
     "categoria": "Vapers de nicotina",
     "descripcion": "Contiene nicotina. Solo mayores de 18.",
     "precio": 48000,
-    "foto": "",
     "visible": true
   },
   {
@@ -156,7 +138,6 @@
     "categoria": "Lentes de contacto",
     "descripcion": "Varios tonos. Pregunta disponibilidad.",
     "precio": 70000,
-    "foto": "",
     "visible": true
   },
   {
@@ -164,7 +145,6 @@
     "categoria": "Joyería para piercings",
     "descripcion": "Para nariz, oreja y más.",
     "precio": 25000,
-    "foto": "",
     "visible": true
   },
   {
@@ -172,7 +152,6 @@
     "categoria": "Joyería para piercings",
     "descripcion": "Acero quirúrgico.",
     "precio": 30000,
-    "foto": "",
     "visible": true
   }
 ]
