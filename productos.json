@@ -1,10 +1,10 @@
 [
   {
-    "nombre": "Bong de vidrio 30 cm",
-    "categoria": "Bongs",
-    "descripcion": "Vidrio grueso con percolador.",
-    "precio": 139987,
-    "foto": "/img/productos/Flower Overlay.jpg",
+    "nombre": "Destilado nacional",
+    "categoria": "Destilados",
+    "descripcion": "Destilado nacional, varias cepas disponibles: sativa, índica o híbrida",
+    "precio": 35000,
+    "foto": "/img/productos/96273.jpg",
     "visible": true
   },
   {
