@@ -1,0 +1,222 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Cannabicos · Head Shop Medellín</title>
+  <meta name="description" content="Cannabicos: head shop y smoke shop en Parque Berrío, Medellín. Bongs, pipas, cueros, rascadores, destilados, accesorios y joyería para piercings.">
+  <link rel="icon" href="img/logo.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Shrikhand&family=Fredoka:wght@500;600&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,700&family=Rubik+Mono+One&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+  <!-- ============ VERIFICACIÓN DE EDAD (+18) ============ -->
+  <div class="age-gate" id="ageGate" role="dialog" aria-modal="true" aria-labelledby="ageTitle">
+    <div class="age-card">
+      <img src="img/logo.png" alt="Logo de Cannabicos" class="age-logo">
+      <p class="eyebrow">Solo para adultos</p>
+      <h2 id="ageTitle">¿Eres mayor de 18 años?</h2>
+      <p>Este sitio tiene productos para mayores de edad. Para entrar confirma tu edad.</p>
+      <div class="age-actions">
+        <button class="btn btn-green" id="ageYes">Sí, soy mayor de 18</button>
+        <button class="btn btn-ghost" id="ageNo">No</button>
+      </div>
+      <p class="age-denied" id="ageDenied" hidden>Lo sentimos, este sitio es solo para mayores de 18 años.</p>
+    </div>
+  </div>
+
+  <!-- ============ ENCABEZADO ============ -->
+  <header class="site-header">
+    <a href="#inicio" class="brand">
+      <img src="img/logo.png" alt="" width="52" height="51">
+      <span>Cannabicos</span>
+    </a>
+    <button class="menu-toggle" id="menuToggle" aria-label="Abrir menú" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+    <nav class="main-nav" id="mainNav">
+      <a href="#categorias">Categorías</a>
+      <a href="#catalogo">Catálogo</a>
+      <a href="#nosotros">Nosotros</a>
+      <a href="#visitanos">Visítanos</a>
+      <a href="https://wa.me/573244259048" class="btn btn-green btn-sm" target="_blank" rel="noopener">WhatsApp</a>
+    </nav>
+  </header>
+
+  <main>
+    <!-- ============ HERO ============ -->
+    <section class="hero" id="inicio">
+      <div class="hero-rays" aria-hidden="true"></div>
+      <div class="hero-inner">
+        <div class="hero-text">
+          <p class="eyebrow">Head shop · Smoke shop · Medellín</p>
+          <h1 class="title-wobble">Canna<br>bicos</h1>
+          <p class="hero-sub">Todo para tu sesión en el corazón del centro: bongs, pipas, cueros, rascadores, destilados, accesorios y joyería para piercings.</p>
+          <div class="hero-actions">
+            <a href="#catalogo" class="btn btn-green">Ver catálogo</a>
+            <a href="#visitanos" class="btn btn-ghost">¿Dónde estamos?</a>
+          </div>
+        </div>
+
+        <!-- Sello psicodélico (SVG editable) -->
+        <div class="hero-emblem" aria-hidden="true">
+          <svg viewBox="0 0 400 400" class="emblem">
+            <defs>
+              <path id="ringPath" d="M200 200 m-162 0 a162 162 0 1 1 324 0 a162 162 0 1 1 -324 0"/>
+              <clipPath id="innerClip"><circle cx="200" cy="200" r="138"/></clipPath>
+              <pattern id="dots" width="14" height="14" patternUnits="userSpaceOnUse">
+                <circle cx="7" cy="7" r="2" fill="#a9805f" opacity=".35"/>
+              </pattern>
+            </defs>
+            <!-- disco exterior con texto girando -->
+            <circle cx="200" cy="200" r="192" class="disc-outer"/>
+            <circle cx="200" cy="200" r="178" class="ring-line"/>
+            <g class="ring-text">
+              <text><textPath href="#ringPath" startOffset="0">HEAD SHOP ✺ SMOKE SHOP ✺ PARQUE BERRÍO ✺ MEDELLÍN ✺</textPath></text>
+            </g>
+            <!-- rayos psicodélicos -->
+            <circle cx="200" cy="200" r="140" class="disc-dark"/>
+            <g clip-path="url(#innerClip)"><g class="rays"><path d="M200 200 L340.0 200.0 A140 140 0 0 1 338.8 218.3 Z"/><path d="M200 200 L335.2 236.2 A140 140 0 0 1 329.3 253.6 Z"/><path d="M200 200 L321.2 270.0 A140 140 0 0 1 311.1 285.2 Z"/><path d="M200 200 L299.0 299.0 A140 140 0 0 1 285.2 311.1 Z"/><path d="M200 200 L270.0 321.2 A140 140 0 0 1 253.6 329.3 Z"/><path d="M200 200 L236.2 335.2 A140 140 0 0 1 218.3 338.8 Z"/><path d="M200 200 L200.0 340.0 A140 140 0 0 1 181.7 338.8 Z"/><path d="M200 200 L163.8 335.2 A140 140 0 0 1 146.4 329.3 Z"/><path d="M200 200 L130.0 321.2 A140 140 0 0 1 114.8 311.1 Z"/><path d="M200 200 L101.0 299.0 A140 140 0 0 1 88.9 285.2 Z"/><path d="M200 200 L78.8 270.0 A140 140 0 0 1 70.7 253.6 Z"/><path d="M200 200 L64.8 236.2 A140 140 0 0 1 61.2 218.3 Z"/><path d="M200 200 L60.0 200.0 A140 140 0 0 1 61.2 181.7 Z"/><path d="M200 200 L64.8 163.8 A140 140 0 0 1 70.7 146.4 Z"/><path d="M200 200 L78.8 130.0 A140 140 0 0 1 88.9 114.8 Z"/><path d="M200 200 L101.0 101.0 A140 140 0 0 1 114.8 88.9 Z"/><path d="M200 200 L130.0 78.8 A140 140 0 0 1 146.4 70.7 Z"/><path d="M200 200 L163.8 64.8 A140 140 0 0 1 181.7 61.2 Z"/><path d="M200 200 L200.0 60.0 A140 140 0 0 1 218.3 61.2 Z"/><path d="M200 200 L236.2 64.8 A140 140 0 0 1 253.6 70.7 Z"/><path d="M200 200 L270.0 78.8 A140 140 0 0 1 285.2 88.9 Z"/><path d="M200 200 L299.0 101.0 A140 140 0 0 1 311.1 114.8 Z"/><path d="M200 200 L321.2 130.0 A140 140 0 0 1 329.3 146.4 Z"/><path d="M200 200 L335.2 163.8 A140 140 0 0 1 338.8 181.7 Z"/></g></g>
+            <circle cx="200" cy="200" r="140" class="ring-line-thick"/>
+            <!-- centro -->
+            <circle cx="200" cy="200" r="104" class="disc-center"/>
+            <circle cx="200" cy="200" r="104" fill="url(#dots)"/>
+            <circle cx="200" cy="200" r="92" class="ring-dash"/>
+            <!-- hoja estilizada -->
+            <g class="leaf">
+              <g transform="translate(200 236)">
+                <path class="stem" d="M0 0 C 2 18, -4 34, 6 48"/>
+                <g transform="rotate(-120)"><path class="leaflet" d="M0 0 C 5.8 -10.2, 5.5 -25.5, 0 -34 C -5.5 -25.5, -5.8 -10.2, 0 0 Z"/><line class="vein" x1="0" y1="-6" x2="0" y2="-24"/></g>
+                <g transform="rotate(120)"><path class="leaflet" d="M0 0 C 5.8 -10.2, 5.5 -25.5, 0 -34 C -5.5 -25.5, -5.8 -10.2, 0 0 Z"/><line class="vein" x1="0" y1="-6" x2="0" y2="-24"/></g>
+                <g transform="rotate(-90)"><path class="leaflet" d="M0 0 C 9.9 -17.4, 9.4 -43.5, 0 -58 C -9.4 -43.5, -9.9 -17.4, 0 0 Z"/><line class="vein" x1="0" y1="-6" x2="0" y2="-48"/></g>
+                <g transform="rotate(90)"><path class="leaflet" d="M0 0 C 9.9 -17.4, 9.4 -43.5, 0 -58 C -9.4 -43.5, -9.9 -17.4, 0 0 Z"/><line class="vein" x1="0" y1="-6" x2="0" y2="-48"/></g>
+                <g transform="rotate(-60)"><path class="leaflet" d="M0 0 C 15.0 -26.4, 14.2 -66.0, 0 -88 C -14.2 -66.0, -15.0 -26.4, 0 0 Z"/><line class="vein" x1="0" y1="-6" x2="0" y2="-78"/></g>
+                <g transform="rotate(60)"><path class="leaflet" d="M0 0 C 15.0 -26.4, 14.2 -66.0, 0 -88 C -14.2 -66.0, -15.0 -26.4, 0 0 Z"/><line class="vein" x1="0" y1="-6" x2="0" y2="-78"/></g>
+                <g transform="rotate(-30)"><path class="leaflet" d="M0 0 C 19.0 -33.6, 18.1 -84.0, 0 -112 C -18.1 -84.0, -19.0 -33.6, 0 0 Z"/><line class="vein" x1="0" y1="-6" x2="0" y2="-102"/></g>
+                <g transform="rotate(30)"><path class="leaflet" d="M0 0 C 19.0 -33.6, 18.1 -84.0, 0 -112 C -18.1 -84.0, -19.0 -33.6, 0 0 Z"/><line class="vein" x1="0" y1="-6" x2="0" y2="-102"/></g>
+                <g transform="rotate(0)"><path class="leaflet" d="M0 0 C 21.8 -38.4, 20.7 -96.0, 0 -128 C -20.7 -96.0, -21.8 -38.4, 0 0 Z"/><line class="vein" x1="0" y1="-6" x2="0" y2="-118"/></g>
+              </g>
+            </g>
+            <!-- humo y estrellas -->
+            <g class="smoke">
+              <path d="M330 60 q-14 -14 0 -28 q14 -14 0 -28"/>
+              <path d="M352 82 q-11 -11 0 -22 q11 -11 0 -22"/>
+            </g>
+            <g class="sparkle"><path d="M40 330 l6 -16 l6 16 l16 6 l-16 6 l-6 16 l-6 -16 l-16 -6 z"/></g>
+            <g class="sparkle s2"><path d="M358 300 l4 -11 l4 11 l11 4 l-11 4 l-4 11 l-4 -11 l-11 -4 z"/></g>
+            <g class="sparkle s3"><path d="M52 58 l4 -11 l4 11 l11 4 l-11 4 l-4 11 l-4 -11 l-11 -4 z"/></g>
+          </svg>
+        </div>
+      </div>
+      <svg class="wave wave-bottom" viewBox="0 0 1440 80" preserveAspectRatio="none" aria-hidden="true">
+        <path d="M0 40 C 180 80 360 0 540 40 S 900 80 1080 40 S 1360 0 1440 40 V80 H0 Z"/>
+      </svg>
+    </section>
+
+    <!-- ============ CINTA ============ -->
+    <div class="marquee" aria-hidden="true">
+      <div class="marquee-track">
+        <span>Bongs ✺ Pipas ✺ Cueros ✺ Rascadores ✺ Destilados ✺ Gomitas ✺ Sopletes ✺ Bandejas ✺ Ceniceros ✺ Piercings ✺ Lentes ✺ Vapers ✺ </span>
+        <span>Bongs ✺ Pipas ✺ Cueros ✺ Rascadores ✺ Destilados ✺ Gomitas ✺ Sopletes ✺ Bandejas ✺ Ceniceros ✺ Piercings ✺ Lentes ✺ Vapers ✺ </span>
+      </div>
+    </div>
+
+    <!-- ============ CATEGORÍAS ============ -->
+    <section class="section" id="categorias">
+      <div class="section-head">
+        <p class="eyebrow">Lo que encuentras</p>
+        <h2>Categorías</h2>
+        <p>Toca una categoría para ver sus productos.</p>
+      </div>
+      <div class="cat-grid" id="catGrid"><!-- se llena desde script.js --></div>
+    </section>
+
+    <!-- ============ CATÁLOGO ============ -->
+    <section class="section section-dark" id="catalogo">
+      <div class="section-head">
+        <p class="eyebrow">Pide por WhatsApp</p>
+        <h2>Catálogo</h2>
+        <p>Elige lo que te gusta y escríbenos. Te confirmamos disponibilidad y precio al instante.</p>
+      </div>
+      <div class="filters">
+        <input type="search" id="searchInput" placeholder="Buscar producto…" aria-label="Buscar producto">
+        <div class="chips" id="chips"><!-- se llena desde script.js --></div>
+      </div>
+      <div class="product-grid" id="productGrid"><!-- se llena desde script.js --></div>
+      <p class="empty" id="emptyMsg" hidden>No encontramos productos con esa búsqueda. ¡Escríbenos y te ayudamos!</p>
+    </section>
+
+    <!-- ============ NOSOTROS ============ -->
+    <section class="section" id="nosotros">
+      <div class="about">
+        <div class="about-badge">
+          <img src="img/logo.png" alt="Mascota de Cannabicos">
+          <span class="badge-ring" aria-hidden="true">✺ Cannabicos ✺ Medellín ✺ Desde el centro ✺</span>
+        </div>
+        <div class="about-text">
+          <p class="eyebrow">Nuestro parche</p>
+          <h2>Somos Cannabicos</h2>
+          <!-- TODO: reemplazar por la historia real de la tienda -->
+          <p>Somos una head shop en pleno centro de Medellín, entre Parque Berrío y La Veracruz. Tenemos de todo para tu ritual, desde lo básico (cueros, encendedores, rascadores) hasta piezas especiales de vidrio, destilados nacionales e importados y joyería para piercings.</p>
+          <p>Te atendemos con buena energía, te asesoramos sin afán y siempre con consumo responsable.</p>
+          <ul class="perks">
+            <li><strong>Asesoría</strong> personalizada en el local o por WhatsApp</li>
+            <li><strong>Variedad</strong> de productos nacionales e importados</li>
+            <li><strong>Domicilios</strong> en Medellín <em>(confirmar zonas)</em></li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ VISÍTANOS ============ -->
+    <section class="section section-green" id="visitanos">
+      <div class="visit">
+        <div class="visit-info">
+          <p class="eyebrow">Ven a vernos</p>
+          <h2>Visítanos</h2>
+          <dl>
+            <dt>Dirección</dt>
+            <dd>Cra 52 # 51-08<br>Parque Berrío / La Veracruz<br>Medellín, Antioquia</dd>
+            <dt>Horario</dt>
+            <!-- TODO: confirmar horario real -->
+            <dd>Lunes a sábado · 10:00 a.m. – 8:00 p.m.<br>Domingos y festivos · consultar</dd>
+            <dt>Contacto</dt>
+            <dd>
+              <a href="https://wa.me/573244259048" target="_blank" rel="noopener">WhatsApp 324 425 9048</a><br>
+              <a href="https://www.instagram.com/cannabicosmed/" target="_blank" rel="noopener">@cannabicosmed</a>
+            </dd>
+          </dl>
+          <div class="hero-actions">
+            <a class="btn btn-dark" href="https://www.google.com/maps/dir/?api=1&destination=6.25128,-75.56945" target="_blank" rel="noopener">Cómo llegar</a>
+            <a class="btn btn-ghost-dark" href="https://www.instagram.com/cannabicosmed/" target="_blank" rel="noopener">Instagram</a>
+          </div>
+        </div>
+        <div class="visit-map">
+          <!-- El mapa usa coordenadas (junto a la Iglesia de la Veracruz) porque Google confundía la dirección con Itagüí.
+                 Si la tienda tiene ficha en Google Maps, se puede cambiar por: q=Cannabicos,+Medellín -->
+          <iframe title="Mapa de Cannabicos" loading="lazy" referrerpolicy="no-referrer-when-downgrade" src="https://www.google.com/maps?q=6.25128,-75.56945&z=17&hl=es&output=embed"></iframe>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- ============ PIE ============ -->
+  <footer class="site-footer">
+    <img src="img/logo.png" alt="" width="70" height="68">
+    <p class="footer-brand">Cannabicos</p>
+    <p>Cra 52 # 51-08 · Parque Berrío · Medellín</p>
+    <p class="legal">Venta exclusiva para mayores de 18 años. Promovemos el consumo responsable. Los vapeadores contienen nicotina, una sustancia adictiva. Prohibida su venta a menores de edad.</p>
+    <p class="small">© <span id="year"></span> Cannabicos · Todos los derechos reservados</p>
+  </footer>
+
+  <!-- Botón flotante de WhatsApp -->
+  <a class="wa-float" href="https://wa.me/573244259048?text=Hola%20Cannabicos!%20%F0%9F%91%8B" target="_blank" rel="noopener" aria-label="Escribir por WhatsApp">
+    <svg viewBox="0 0 32 32" width="30" height="30" aria-hidden="true"><path fill="currentColor" d="M16 3a13 13 0 0 0-11.2 19.6L3 29l6.6-1.7A13 13 0 1 0 16 3zm0 23.6a10.6 10.6 0 0 1-5.4-1.5l-.4-.2-3.9 1 1-3.8-.2-.4A10.6 10.6 0 1 1 16 26.6zm5.8-7.9c-.3-.2-1.9-.9-2.2-1-.3-.1-.5-.2-.7.2-.2.3-.8 1-1 1.2-.2.2-.4.2-.7.1a8.7 8.7 0 0 1-4.3-3.8c-.3-.6.3-.5.9-1.7.1-.2 0-.4 0-.6l-1-2.4c-.3-.6-.5-.5-.7-.5h-.6c-.2 0-.6.1-.9.4-.3.3-1.2 1.1-1.2 2.8s1.2 3.2 1.4 3.5c.2.2 2.4 3.6 5.8 5 2.1.9 3 1 4 .8.7-.1 1.9-.8 2.2-1.5.3-.8.3-1.4.2-1.5-.1-.2-.3-.3-.6-.4z"/></svg>
+  </a>
+
+  <script src="script.js"></script>
+</body>
+</html>
