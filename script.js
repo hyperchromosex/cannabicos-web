@@ -208,7 +208,7 @@ cargarProductos();
   if (!gl) return;
   const derivadas = !!gl.getExtension("OES_standard_derivatives");
 
-  const VELO = 0.72; // qué tan suave se ve la textura fuera de la cabecera (0 = igual, 1 = beige liso)
+  const VELO = -0.5; // qué tan suave se ve la textura fuera de la cabecera (0 = igual, 1 = beige liso)
 
   const vert = "attribute vec2 p; void main(){ gl_Position = vec4(p, 0.0, 1.0); }";
   const frag = `${derivadas ? "#extension GL_OES_standard_derivatives : enable\n" : ""}
