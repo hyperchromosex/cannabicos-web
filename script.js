@@ -208,7 +208,7 @@ cargarProductos();
   if (!gl) return;
   const derivadas = !!gl.getExtension("OES_standard_derivatives");
 
-  const VELO = 1.0; // intensidad de la película oscura fuera de la cabecera (0 = sin película, 1 = completa)
+  const VELO = 0.5; // intensidad de la película oscura fuera de la cabecera (0 = sin película, 1 = completa)
 
   const vert = "attribute vec2 p; void main(){ gl_Position = vec4(p, 0.0, 1.0); }";
   const frag = `${derivadas ? "#extension GL_OES_standard_derivatives : enable\n" : ""}
