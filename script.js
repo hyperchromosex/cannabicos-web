@@ -198,7 +198,7 @@ cargarProductos();
    Una sola textura continua, inspirada en el cuadro del local, que fluye
    detrás de toda la página. Va pegada al contenido (se desplaza al hacer
    scroll), así cada sección muestra otra parte del mismo movimiento.
-   En la cabecera se ve brillante; en el resto, suavizada con un velo beige.
+   En la cabecera se ve brillante; en el resto, detrás de una película oscura.
    Si el celular no soporta WebGL, queda la imagen fija img/hero-textura.jpg. */
 (function texturaFondo() {
   const canvas = document.getElementById("fondoTextura");
@@ -208,7 +208,7 @@ cargarProductos();
   if (!gl) return;
   const derivadas = !!gl.getExtension("OES_standard_derivatives");
 
-  const VELO = -0.5; // qué tan suave se ve la textura fuera de la cabecera (0 = igual, 1 = beige liso)
+  const VELO = 1.0; // intensidad de la película oscura fuera de la cabecera (0 = sin película, 1 = completa)
 
   const vert = "attribute vec2 p; void main(){ gl_Position = vec4(p, 0.0, 1.0); }";
   const frag = `${derivadas ? "#extension GL_OES_standard_derivatives : enable\n" : ""}
@@ -224,7 +224,12 @@ cargarProductos();
     const vec3 NARANJA = vec3(0.953, 0.514, 0.137);
     const vec3 VERDE   = vec3(0.243, 0.608, 0.247);
     const vec3 VERDE_G = vec3(0.333, 0.498, 0.322);
-    const vec3 BEIGE   = vec3(0.953, 0.937, 0.918);
+    // Mismos colores vistos detrás de una película oscura. El naranja se mantiene
+    // saturado a propósito: un naranja oscurecido sin más se vuelve café.
+    const vec3 CREMA_O   = vec3(0.075, 0.150, 0.088);
+    const vec3 NARANJA_O = vec3(0.560, 0.215, 0.025);
+    const vec3 VERDE_O   = vec3(0.105, 0.290, 0.115);
+    const vec3 VERDE_G_O = vec3(0.125, 0.210, 0.128);
     vec3 mod289(vec3 x){ return x - floor(x * (1.0/289.0)) * 289.0; }
     vec2 mod289(vec2 x){ return x - floor(x * (1.0/289.0)) * 289.0; }
     vec3 permute(vec3 x){ return mod289(((x*34.0)+1.0)*x); }
@@ -257,13 +262,12 @@ cargarProductos();
       vec2 r = p + 0.95*q;
       float fo = fbm(r + vec2(1.7, 9.2) + 0.07*t);
       float fg = fbm(r*0.95 + vec2(8.3, 2.8) - 0.06*t);
-      vec3 col = CREMA;
       float o = paso(0.18, fo) * (1.0 - paso(0.40, fo) * (1.0 - paso(0.46, fo)));
-      col = mix(col, NARANJA, o);
-      col = mix(col, VERDE_G, paso(0.26, fg));
-      col = mix(col, VERDE, paso(0.36, fg));
-      // fuera de la cabecera: misma textura, suavizada
-      col = mix(col, BEIGE, uVelo * step(uHeroFin, y));
+      float gg = paso(0.26, fg), gv = paso(0.36, fg);
+      vec3 col = mix(mix(mix(CREMA, NARANJA, o), VERDE_G, gg), VERDE, gv);
+      // fuera de la cabecera: la misma textura detrás de una película oscura
+      vec3 osc = mix(mix(mix(CREMA_O, NARANJA_O, o), VERDE_G_O, gg), VERDE_O, gv);
+      col = mix(col, osc, uVelo * step(uHeroFin, y));
       gl_FragColor = vec4(col, 1.0);
     }`;
 
