@@ -68,20 +68,18 @@
           <svg viewBox="0 0 400 400" class="emblem">
             <defs>
               <path id="ringPath" d="M200 200 m-162 0 a162 162 0 1 1 324 0 a162 162 0 1 1 -324 0"/>
-              <clipPath id="innerClip"><circle cx="200" cy="200" r="138"/></clipPath>
               <pattern id="dots" width="14" height="14" patternUnits="userSpaceOnUse">
                 <circle cx="7" cy="7" r="2" fill="#a9805f" opacity=".35"/>
               </pattern>
             </defs>
             <!-- disco exterior con texto girando -->
-            <circle cx="200" cy="200" r="192" class="disc-outer"/>
+            <path class="disc-outer" fill-rule="evenodd" d="M200 8 a192 192 0 1 0 0.01 0 Z M200 60 a140 140 0 1 0 0.01 0 Z"/>
             <circle cx="200" cy="200" r="178" class="ring-line"/>
             <g class="ring-text">
               <text><textPath href="#ringPath" startOffset="0" textLength="1000" lengthAdjust="spacing">SMOKE SHOP ✺ PARQUE BERRÍO ✺ MEDELLÍN ✺</textPath></text>
             </g>
             <!-- rayos psicodélicos -->
-            <circle cx="200" cy="200" r="140" class="disc-dark"/>
-            <g clip-path="url(#innerClip)"><g class="rays"><path d="M200 200 L340.0 200.0 A140 140 0 0 1 338.8 218.3 Z"/><path d="M200 200 L335.2 236.2 A140 140 0 0 1 329.3 253.6 Z"/><path d="M200 200 L321.2 270.0 A140 140 0 0 1 311.1 285.2 Z"/><path d="M200 200 L299.0 299.0 A140 140 0 0 1 285.2 311.1 Z"/><path d="M200 200 L270.0 321.2 A140 140 0 0 1 253.6 329.3 Z"/><path d="M200 200 L236.2 335.2 A140 140 0 0 1 218.3 338.8 Z"/><path d="M200 200 L200.0 340.0 A140 140 0 0 1 181.7 338.8 Z"/><path d="M200 200 L163.8 335.2 A140 140 0 0 1 146.4 329.3 Z"/><path d="M200 200 L130.0 321.2 A140 140 0 0 1 114.8 311.1 Z"/><path d="M200 200 L101.0 299.0 A140 140 0 0 1 88.9 285.2 Z"/><path d="M200 200 L78.8 270.0 A140 140 0 0 1 70.7 253.6 Z"/><path d="M200 200 L64.8 236.2 A140 140 0 0 1 61.2 218.3 Z"/><path d="M200 200 L60.0 200.0 A140 140 0 0 1 61.2 181.7 Z"/><path d="M200 200 L64.8 163.8 A140 140 0 0 1 70.7 146.4 Z"/><path d="M200 200 L78.8 130.0 A140 140 0 0 1 88.9 114.8 Z"/><path d="M200 200 L101.0 101.0 A140 140 0 0 1 114.8 88.9 Z"/><path d="M200 200 L130.0 78.8 A140 140 0 0 1 146.4 70.7 Z"/><path d="M200 200 L163.8 64.8 A140 140 0 0 1 181.7 61.2 Z"/><path d="M200 200 L200.0 60.0 A140 140 0 0 1 218.3 61.2 Z"/><path d="M200 200 L236.2 64.8 A140 140 0 0 1 253.6 70.7 Z"/><path d="M200 200 L270.0 78.8 A140 140 0 0 1 285.2 88.9 Z"/><path d="M200 200 L299.0 101.0 A140 140 0 0 1 311.1 114.8 Z"/><path d="M200 200 L321.2 130.0 A140 140 0 0 1 329.3 146.4 Z"/><path d="M200 200 L335.2 163.8 A140 140 0 0 1 338.8 181.7 Z"/></g></g>
+            <!-- ventana: deja ver la textura animada del fondo -->
             <circle cx="200" cy="200" r="140" class="ring-line-thick"/>
             <!-- centro -->
             <circle cx="200" cy="200" r="104" class="disc-center"/>
@@ -102,11 +100,7 @@
                 <g transform="rotate(0)"><path class="leaflet" d="M0 0 C 21.8 -38.4, 20.7 -96.0, 0 -128 C -20.7 -96.0, -21.8 -38.4, 0 0 Z"/><line class="vein" x1="0" y1="-6" x2="0" y2="-118"/></g>
               </g>
             </g>
-            <!-- humo y estrellas -->
-            <g class="smoke">
-              <path d="M330 60 q-14 -14 0 -28 q14 -14 0 -28"/>
-              <path d="M352 82 q-11 -11 0 -22 q11 -11 0 -22"/>
-            </g>
+            <!-- estrellas -->
             <g class="sparkle"><path d="M40 330 l6 -16 l6 16 l16 6 l-16 6 l-6 16 l-6 -16 l-16 -6 z"/></g>
             <g class="sparkle s2"><path d="M358 300 l4 -11 l4 11 l11 4 l-11 4 l-4 11 l-4 -11 l-11 -4 z"/></g>
             <g class="sparkle s3"><path d="M52 58 l4 -11 l4 11 l11 4 l-11 4 l-4 11 l-4 -11 l-11 -4 z"/></g>
@@ -131,9 +125,13 @@
       <div class="section-head">
         <p class="eyebrow">Lo que encuentras</p>
         <h2>Categorías</h2>
-        <p>Toca una categoría para ver sus productos.</p>
+        <p>Desliza y toca una categoría para ver sus productos.</p>
       </div>
-      <div class="cat-grid" id="catGrid"><!-- se llena desde script.js --></div>
+      <div class="cat-carrusel">
+        <button class="cat-flecha prev" id="catPrev" aria-label="Ver categorías anteriores">←</button>
+        <div class="cat-scroll" id="catGrid"><!-- se llena desde script.js --></div>
+        <button class="cat-flecha next" id="catNext" aria-label="Ver más categorías">→</button>
+      </div>
     </section>
 
     <!-- ============ CATÁLOGO ============ -->

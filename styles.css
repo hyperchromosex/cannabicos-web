@@ -172,10 +172,10 @@ h2 { font-size: clamp(2.4rem, 6vw, 4rem); color: var(--tinta); text-shadow: 3px 
 }
 .title-wobble {
   font-size: clamp(5.2rem, 17vw, 10rem);
-  color: var(--verde-oscuro);                /* relleno */
-  -webkit-text-stroke: .1em var(--naranja);  /* contorno naranja: se ve la mitad por fuera de la letra */
+  color: var(--naranja);                     /* relleno */
+  -webkit-text-stroke: .1em var(--verde);     /* borde verde oscuro: se ve la mitad por fuera de la letra */
   paint-order: stroke fill;
-  text-shadow: .07em .07em 0 var(--tinta);
+  text-shadow: .08em .08em 0 var(--verde);    /* sombra del mismo verde oscuro */
   line-height: .9;
   margin-bottom: 1.4rem;
   transform: rotate(-3deg);
@@ -190,16 +190,12 @@ h2 { font-size: clamp(2.4rem, 6vw, 4rem); color: var(--tinta); text-shadow: 3px 
 .emblem .ring-line-thick { fill: none; stroke: var(--tinta); stroke-width: 6; }
 .emblem .ring-text { transform-origin: 200px 200px; animation: spin 40s linear infinite; }
 .emblem .ring-text text { font-family: var(--font-mono); font-size: 19px; fill: var(--beige); letter-spacing: 2px; }
-.emblem .disc-dark { fill: var(--naranja); }
-.emblem .rays { transform-origin: 200px 200px; animation: spin 60s linear infinite reverse; }
-.emblem .rays path { fill: var(--naranja-claro); }
 .emblem .disc-center { fill: var(--beige); stroke: var(--tinta); stroke-width: 6; }
 .emblem .ring-dash { fill: none; stroke: var(--naranja); stroke-width: 3; stroke-dasharray: 2 10; stroke-linecap: round; }
 .emblem .leaf { transform-origin: 200px 236px; animation: sway 4s ease-in-out infinite; }
 .emblem .leaflet { fill: var(--verde-claro); stroke: var(--tinta); stroke-width: 4; stroke-linejoin: round; }
 .emblem .vein { stroke: var(--verde-oscuro); stroke-width: 2.5; stroke-linecap: round; opacity: .85; }
 .emblem .stem { fill: none; stroke: var(--tinta); stroke-width: 6; stroke-linecap: round; }
-.emblem .smoke path { fill: none; stroke: var(--tinta); stroke-width: 6; stroke-linecap: round; opacity: .7; animation: drift 4s ease-in-out infinite; }
 .emblem .sparkle path { fill: var(--beige); stroke: var(--tinta); stroke-width: 3; }
 .emblem .sparkle { transform-box: fill-box; transform-origin: center; animation: twinkle 2s ease-in-out infinite; }
 .emblem .sparkle.s2 { animation-delay: .7s; }
@@ -234,33 +230,64 @@ h2 { font-size: clamp(2.4rem, 6vw, 4rem); color: var(--tinta); text-shadow: 3px 
 /* títulos de sección: letra verde casi negro con sombra verde claro */
 main .section h2 { text-shadow: 3px 3px 0 var(--verde-claro); }
 
-/* ---------- Categorías ---------- */
-.cat-grid {
-  max-width: 1200px; margin: 0 auto;
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(min(200px, 100%), 1fr));
-  gap: .75rem;
+/* ---------- Categorías (carrusel horizontal) ---------- */
+.cat-carrusel { position: relative; max-width: 1200px; margin: 0 auto; }
+.cat-scroll {
+  display: flex; gap: 1rem;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  scroll-padding-inline: 4px;
+  padding: 6px 4px 18px;            /* espacio para la sombra de las tarjetas */
+  scrollbar-width: thin;
+  scrollbar-color: var(--verde) transparent;
+  -webkit-overflow-scrolling: touch;
 }
 .cat-card {
-  appearance: none;
-  text-align: left;
-  font: inherit;
-  cursor: pointer;
-  padding: .75rem 1rem;
+  appearance: none; font: inherit; cursor: pointer; text-align: center;
+  flex: 0 0 clamp(150px, 42vw, 190px);
+  scroll-snap-align: start;
+  display: flex; flex-direction: column;
+  padding: 0;
   border: 3px solid var(--tinta);
-  border-radius: 16px;
-  background: var(--beige-2);
+  border-radius: 18px;
+  background: var(--beige);
   box-shadow: 4px 4px 0 var(--tinta);
-  transition: transform .15s, box-shadow .15s, background .2s;
-  min-width: 0;
-  display: flex; align-items: center; justify-content: space-between; gap: .5rem;
+  overflow: hidden;
+  transition: transform .15s, box-shadow .15s;
 }
-.cat-card:nth-child(3n+2) { background: var(--verde-claro); }
-.cat-card:nth-child(3n) { background: var(--naranja); }
-.cat-card:hover { transform: translate(-2px, -2px); box-shadow: 6px 6px 0 var(--tinta); }
-.cat-arrow { flex: none; font-family: var(--font-mono); font-size: .9rem; color: var(--verde-oscuro); transition: transform .15s; }
-.cat-card:hover .cat-arrow { transform: translateX(3px); }
-.cat-name { font-family: var(--font-ui); font-weight: 600; font-size: 1.12rem; overflow-wrap: break-word; hyphens: auto; color: var(--tinta); line-height: 1.05; }
+.cat-card:hover, .cat-card:focus-visible { transform: translate(-2px, -2px); box-shadow: 6px 6px 0 var(--tinta); }
+.cat-card:focus-visible { outline: 3px solid var(--naranja); outline-offset: 3px; }
+.cat-img {
+  display: block;
+  aspect-ratio: 1 / 1.08;            /* la tarjeta queda un poco más alta que ancha */
+  background: radial-gradient(circle at 50% 42%, #FFF6EA 0 30%, var(--durazno) 75%);
+  border-bottom: 3px solid var(--tinta);
+}
+.cat-card:nth-child(3n+2) .cat-img { background: radial-gradient(circle at 50% 42%, #F4FBEC 0 30%, #CDEBB4 75%); }
+.cat-card:nth-child(3n) .cat-img { background: radial-gradient(circle at 50% 42%, #FFF1E2 0 30%, #FBC896 75%); }
+.cat-img img { width: 100%; height: 100%; object-fit: contain; padding: 8%; transition: transform .25s; }
+.cat-card:hover .cat-img img { transform: scale(1.06) rotate(-2deg); }
+.cat-name {
+  display: flex; align-items: center; justify-content: center;
+  min-height: 3.1em;
+  padding: .45rem .5rem;
+  font-family: var(--font-ui); font-weight: 600; font-size: .95rem; line-height: 1.1;
+  color: var(--tinta);
+}
+.cat-flecha {
+  position: absolute; top: calc(50% - 18px); z-index: 2;
+  width: 44px; height: 44px; border-radius: 50%;
+  display: grid; place-items: center;
+  border: 3px solid var(--tinta);
+  background: var(--naranja); color: var(--tinta);
+  font: 700 1.2rem var(--font-body);
+  box-shadow: 3px 3px 0 var(--tinta);
+  cursor: pointer;
+}
+.cat-flecha.prev { left: -14px; }
+.cat-flecha.next { right: -14px; }
+.cat-flecha:disabled { opacity: 0; pointer-events: none; }
+@media (hover: none), (max-width: 640px) { .cat-flecha { display: none; } }  /* en celular se desliza con el dedo */
 
 /* ---------- Filtros y catálogo ---------- */
 .filters { max-width: 1200px; margin: 0 auto 2rem; display: grid; gap: 1rem; }
@@ -435,9 +462,6 @@ main .section h2 { text-shadow: 3px 3px 0 var(--verde-claro); }
   .about-badge { max-width: 280px; margin: 2.5rem auto; }
 }
 @media (max-width: 420px) {
-  .cat-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: .6rem; }
-  .cat-card { padding: .65rem .75rem; }
-  .cat-name { font-size: .98rem; }
   .brand span { font-size: 1.3rem; }
 }
 

@@ -8,23 +8,25 @@
 const WHATSAPP = "573244259048"; // número con indicativo de Colombia (57)
 
 
-/* ---------- Categorías ---------- */
+/* ---------- Categorías ----------
+   Cada categoría tiene su imagen 3D en img/categorias/. Si agregas una
+   categoría nueva sin imagen, se muestra el logo en su lugar. */
 const CATEGORIAS = [
-  { id: "minibongs",            nombre: "Mini bongs" },
-  { id: "destilado-nacional",   nombre: "Destilado nacional" },
-  { id: "destilado-importado",  nombre: "Destilado importado" },
-  { id: "gomitas",              nombre: "Gomitas mágicas" },
-  { id: "palas",                nombre: "Palas dosificadoras" },
-  { id: "armadores",            nombre: "Armadores" },
-  { id: "rascadores",           nombre: "Rascadores" },
-  { id: "lentes",               nombre: "Lentes de contacto" },
-  { id: "filtros",              nombre: "Filtros" },
-  { id: "bandejas",             nombre: "Bandejas" },
-  { id: "crema-tatuajes",       nombre: "Crema para tatuajes" },
-  { id: "cueros",               nombre: "Cueros" },
-  { id: "vapers",               nombre: "Vaper nicotina" },
-  { id: "pipas",                nombre: "Pipas" },
-  { id: "baterias",             nombre: "Baterías para destilados" },
+  { id: "minibongs",            nombre: "Mini bongs", img: "img/categorias/minibongs.webp" },
+  { id: "destilado-nacional",   nombre: "Destilado nacional", img: "img/categorias/destilado-nacional.webp" },
+  { id: "destilado-importado",  nombre: "Destilado importado", img: "img/categorias/destilado-importado.webp" },
+  { id: "gomitas",              nombre: "Gomitas mágicas", img: "img/categorias/gomitas.webp" },
+  { id: "palas",                nombre: "Palas dosificadoras", img: "img/categorias/palas.webp" },
+  { id: "armadores",            nombre: "Armadores", img: "img/categorias/armadores.webp" },
+  { id: "rascadores",           nombre: "Rascadores", img: "img/categorias/rascadores.webp" },
+  { id: "lentes",               nombre: "Lentes de contacto", img: "img/categorias/lentes.webp" },
+  { id: "filtros",              nombre: "Filtros", img: "img/categorias/filtros.webp" },
+  { id: "bandejas",             nombre: "Bandejas", img: "img/categorias/bandejas.webp" },
+  { id: "crema-tatuajes",       nombre: "Crema para tatuajes", img: "img/categorias/crema-tatuajes.webp" },
+  { id: "cueros",               nombre: "Cueros", img: "img/categorias/cueros.webp" },
+  { id: "vapers",               nombre: "Vaper nicotina", img: "img/categorias/vapers.webp" },
+  { id: "pipas",                nombre: "Pipas", img: "img/categorias/pipas.webp" },
+  { id: "baterias",             nombre: "Baterías para destilados", img: "img/categorias/baterias.webp" },
 ];
 
 
@@ -67,18 +69,34 @@ nav.querySelectorAll("a").forEach((a) => a.addEventListener("click", () => nav.c
 
 /* ---------- Categorías ---------- */
 function pintarCategorias() {
-  $("#catGrid").innerHTML = CATEGORIAS.map((c) => `
+  const grid = $("#catGrid");
+  grid.innerHTML = CATEGORIAS.map((c) => `
     <button class="cat-card" data-cat="${c.id}">
+      <span class="cat-img"><img src="${c.img || "img/logo.png"}" alt="" loading="lazy" width="480" height="480"></span>
       <span class="cat-name">${c.nombre}</span>
-      <span class="cat-arrow" aria-hidden="true">→</span>
     </button>`).join("");
-  $("#catGrid").addEventListener("click", (e) => {
+  // si falta una imagen, se muestra el logo
+  grid.addEventListener("error", (e) => {
+    if (e.target.tagName === "IMG" && !e.target.src.endsWith("img/logo.png")) e.target.src = "img/logo.png";
+  }, true);
+  grid.addEventListener("click", (e) => {
     const btn = e.target.closest(".cat-card");
     if (!btn) return;
     filtroCat = btn.dataset.cat;
     pintarChips(); pintarProductos();
     $("#catalogo").scrollIntoView({ behavior: "smooth" });
   });
+  // flechas del carrusel
+  const paso = () => Math.max(grid.clientWidth * 0.8, 200);
+  $("#catPrev").addEventListener("click", () => grid.scrollBy({ left: -paso(), behavior: "smooth" }));
+  $("#catNext").addEventListener("click", () => grid.scrollBy({ left: paso(), behavior: "smooth" }));
+  const actualizarFlechas = () => {
+    $("#catPrev").disabled = grid.scrollLeft < 8;
+    $("#catNext").disabled = grid.scrollLeft + grid.clientWidth > grid.scrollWidth - 8;
+  };
+  grid.addEventListener("scroll", actualizarFlechas, { passive: true });
+  window.addEventListener("resize", actualizarFlechas);
+  actualizarFlechas();
 }
 
 /* ---------- Chips de filtro ---------- */
