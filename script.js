@@ -112,7 +112,7 @@ function pintarProductos() {
       ? `<img class="foto" src="${escapar(p.foto)}" alt="${escapar(p.nombre)}" loading="lazy">`
       : logo;
     const precio = p.precio ? formatoPeso(p.precio) : "Consultar precio";
-    const msg = `¡Hola Cannabicos! 👋 Me interesa: ${p.nombre}. ¿Lo tienen disponible?`;
+    const msg = `¡Hola Cannábicos! 👋 Me interesa: ${p.nombre}. ¿Lo tienen disponible?`;
     return `
       <article class="product">
         <div class="product-img">${imagen}<span class="tag">${escapar(cat.nombre)}</span></div>
@@ -194,16 +194,21 @@ pintarCategorias();
 pintarChips();
 cargarProductos();
 
-/* ---------- Textura animada del inicio ----------
-   Manchas que fluyen como el cuadro del local (crema, naranja y verdes).
-   Se dibuja con WebGL a baja resolución para no gastar batería; si el
-   celular no lo soporta, queda la imagen fija img/hero-textura.jpg. */
-(function texturaHero() {
-  const canvas = document.getElementById("heroCanvas");
-  if (!canvas) return;
+/* ---------- Textura animada de fondo (toda la página) ----------
+   Una sola textura continua, inspirada en el cuadro del local, que fluye
+   detrás de toda la página. Va pegada al contenido (se desplaza al hacer
+   scroll), así cada sección muestra otra parte del mismo movimiento.
+   En la cabecera se ve brillante; en el resto, suavizada con un velo beige.
+   Si el celular no soporta WebGL, queda la imagen fija img/hero-textura.jpg. */
+(function texturaFondo() {
+  const canvas = document.getElementById("fondoTextura");
+  const hero = document.querySelector(".hero");
+  if (!canvas || !hero) return;
   const gl = canvas.getContext("webgl", { antialias: false, alpha: false, preserveDrawingBuffer: false });
   if (!gl) return;
   const derivadas = !!gl.getExtension("OES_standard_derivatives");
+
+  const VELO = 0.72; // qué tan suave se ve la textura fuera de la cabecera (0 = igual, 1 = beige liso)
 
   const vert = "attribute vec2 p; void main(){ gl_Position = vec4(p, 0.0, 1.0); }";
   const frag = `${derivadas ? "#extension GL_OES_standard_derivatives : enable\n" : ""}
@@ -212,12 +217,14 @@ cargarProductos();
     #else
     precision mediump float;
     #endif
-    uniform vec2 uRes; uniform float uTime;
+    uniform vec2 uRes; uniform float uTime; uniform float uEscala;
+    uniform float uScroll; uniform float uHeroFin; uniform float uVelo;
     // Colores (iguales al cuadro)
     const vec3 CREMA   = vec3(0.980, 0.847, 0.675);
     const vec3 NARANJA = vec3(0.953, 0.514, 0.137);
     const vec3 VERDE   = vec3(0.243, 0.608, 0.247);
     const vec3 VERDE_G = vec3(0.333, 0.498, 0.322);
+    const vec3 BEIGE   = vec3(0.953, 0.937, 0.918);
     vec3 mod289(vec3 x){ return x - floor(x * (1.0/289.0)) * 289.0; }
     vec2 mod289(vec2 x){ return x - floor(x * (1.0/289.0)) * 289.0; }
     vec3 permute(vec3 x){ return mod289(((x*34.0)+1.0)*x); }
@@ -241,19 +248,22 @@ cargarProductos();
       return smoothstep(borde - w, borde + w, v);
     }
     void main(){
-      vec2 p = gl_FragCoord.xy / uRes.y * 0.8;
+      // posición en la PÁGINA (px CSS), para que la textura sea continua entre secciones
+      vec2 css = vec2(gl_FragCoord.x, uRes.y - gl_FragCoord.y) / uEscala;
+      float y = css.y + uScroll;
+      vec2 p = vec2(css.x, -y) * 0.00095;
       float t = uTime;
       vec2 q = vec2(fbm(p + vec2(0.0, 0.11*t)), fbm(p + vec2(5.2, 1.3) - 0.09*t));
       vec2 r = p + 0.95*q;
       float fo = fbm(r + vec2(1.7, 9.2) + 0.07*t);
       float fg = fbm(r*0.95 + vec2(8.3, 2.8) - 0.06*t);
       vec3 col = CREMA;
-      // naranja con una veta crema por dentro (como el cuadro)
       float o = paso(0.18, fo) * (1.0 - paso(0.40, fo) * (1.0 - paso(0.46, fo)));
       col = mix(col, NARANJA, o);
-      // verde con borde verde grisáceo
       col = mix(col, VERDE_G, paso(0.26, fg));
       col = mix(col, VERDE, paso(0.36, fg));
+      // fuera de la cabecera: misma textura, suavizada
+      col = mix(col, BEIGE, uVelo * step(uHeroFin, y));
       gl_FragColor = vec4(col, 1.0);
     }`;
 
@@ -271,11 +281,13 @@ cargarProductos();
   gl.bufferData(gl.ARRAY_BUFFER, new Float32Array([-1, -1, 3, -1, -1, 3]), gl.STATIC_DRAW);
   const loc = gl.getAttribLocation(prog, "p");
   gl.enableVertexAttribArray(loc); gl.vertexAttribPointer(loc, 2, gl.FLOAT, false, 0, 0);
-  const uRes = gl.getUniformLocation(prog, "uRes"), uTime = gl.getUniformLocation(prog, "uTime");
+  const u = (n) => gl.getUniformLocation(prog, n);
+  const uRes = u("uRes"), uTime = u("uTime"), uEscala = u("uEscala"), uScroll = u("uScroll"), uHeroFin = u("uHeroFin"), uVelo = u("uVelo");
 
   const ESCALA = window.__ESCALA_TEXTURA || 0.6;       // resolución relativa (menos = más liviano)
   const quieto = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-  let visible = true, raf = 0, t0 = performance.now(), offset = Math.random() * 100;
+  let raf = 0;
+  const t0 = performance.now(), offset = Math.random() * 100;
 
   function ajustar() {
     const w = Math.max(1, Math.round(canvas.clientWidth * ESCALA));
@@ -285,21 +297,27 @@ cargarProductos();
   function dibujar(ahora) {
     ajustar();
     gl.uniform2f(uRes, canvas.width, canvas.height);
-    gl.uniform1f(uTime, offset + (ahora - t0) / 1000);
+    gl.uniform1f(uEscala, canvas.width / Math.max(1, canvas.clientWidth));
+    gl.uniform1f(uScroll, window.scrollY);
+    gl.uniform1f(uHeroFin, hero.getBoundingClientRect().bottom + window.scrollY);
+    gl.uniform1f(uVelo, VELO);
+    gl.uniform1f(uTime, offset + (quieto ? 0 : (ahora - t0) / 1000));
     gl.drawArrays(gl.TRIANGLES, 0, 3);
-    if (!canvas.classList.contains("ready")) canvas.classList.add("ready");
+    if (!canvas.classList.contains("ready")) {
+      canvas.classList.add("ready");
+      document.documentElement.classList.add("textura-viva");
+    }
   }
   function bucle(ahora) {
     dibujar(ahora);
-    raf = visible && !document.hidden && !quieto ? requestAnimationFrame(bucle) : 0;
+    raf = !document.hidden && !quieto ? requestAnimationFrame(bucle) : 0;
   }
-  function reanudar() { if (!raf && visible && !document.hidden && !quieto) raf = requestAnimationFrame(bucle); }
+  function pedirDibujo() { if (!raf) raf = requestAnimationFrame((a) => { raf = 0; quieto ? dibujar(a) : bucle(a); }); }
 
-  // Pausa cuando el inicio no se ve o la pestaña está oculta (ahorra batería)
-  if ("IntersectionObserver" in window) {
-    new IntersectionObserver((e) => { visible = e[0].isIntersecting; reanudar(); }).observe(canvas);
-  }
-  document.addEventListener("visibilitychange", reanudar);
-  window.addEventListener("resize", () => { if (quieto) dibujar(performance.now()); });
+  // Pausa cuando la pestaña está oculta (ahorra batería)
+  document.addEventListener("visibilitychange", () => { if (!document.hidden) pedirDibujo(); });
+  // Sin animación (reducir movimiento): solo se redibuja al hacer scroll o cambiar tamaño
+  window.addEventListener("scroll", () => { if (quieto) pedirDibujo(); }, { passive: true });
+  window.addEventListener("resize", pedirDibujo);
   bucle(performance.now());
 })();
