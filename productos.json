@@ -128,10 +128,11 @@
     "visible": true
   },
   {
-    "nombre": "Batería 510 recargable",
-    "categoria": "Baterías para destilados",
-    "descripcion": "Voltaje ajustable, carga USB-C.",
-    "precio": 45000,
+    "nombre": "vidrio con colores ",
+    "categoria": "Pipas",
+    "descripcion": "Fabricadas en vidrio grueso y de fácil limpieza ",
+    "precio": 15000,
+    "foto": "/img/productos/IMG_8163.jpeg",
     "visible": true
   }
 ]
