@@ -80,17 +80,19 @@
     "visible": true
   },
   {
-    "nombre": "Bandeja metálica ilustrada",
-    "categoria": "Bandejas",
-    "descripcion": "Tamaño mediano.",
-    "precio": 35000,
+    "nombre": "HAZE",
+    "categoria": "Gomitas mágicas",
+    "descripcion": "50mg de THC por cada gomita, valor por unidad ",
+    "precio": 8000,
+    "foto": "/img/productos/IMG_8859-1.jpeg",
     "visible": true
   },
   {
-    "nombre": "Crema para tatuajes",
-    "categoria": "Crema para tatuajes",
-    "descripcion": "Hidrata y protege tu tatuaje.",
-    "precio": 25000,
+    "nombre": "Strike",
+    "categoria": "Gomitas mágicas",
+    "descripcion": "250mg de THC por gomita, valor por unidad ",
+    "precio": 10000,
+    "foto": "/img/productos/IMG_8418.jpeg",
     "visible": true
   },
   {
