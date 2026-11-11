@@ -24,10 +24,11 @@
     "visible": true
   },
   {
-    "nombre": "Destilado importado",
+    "nombre": "Alien labs",
     "categoria": "Destilado importado",
-    "descripcion": "Pregunta por marcas disponibles.",
-    "precio": 140000,
+    "descripcion": "Destilado full spectrum, sin añadidos químicos y alto porcentaje de THC ",
+    "precio": 50000,
+    "foto": "/img/productos/IMG_8877.jpeg",
     "visible": true
   },
   {
