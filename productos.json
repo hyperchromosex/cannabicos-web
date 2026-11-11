@@ -134,5 +134,21 @@
     "precio": 15000,
     "foto": "/img/productos/IMG_8163.jpeg",
     "visible": true
+  },
+  {
+    "nombre": "Bull",
+    "categoria": "Baterías para destilados",
+    "descripcion": "900MAH de pura potencia, cargador tipo C y 3 voltajes intercambiables. Preguntar por la disponibilidad de colores ",
+    "precio": 40000,
+    "foto": "/img/productos/IMG_8893-1.jpeg",
+    "visible": true
+  },
+  {
+    "nombre": "Discretas ",
+    "categoria": "Baterías para destilados",
+    "descripcion": "Baterías con 3 voltajes intercambiables, tu cápsula queda totalmente cubierta y disimulada, incluye cargador tipo C. (Precio solo de la batería) ",
+    "precio": 70000,
+    "foto": "/img/productos/IMG_8663.jpeg",
+    "visible": true
   }
 ]
