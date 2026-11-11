@@ -182,5 +182,13 @@
     "precio": 60000,
     "foto": "/img/productos/IMG_8806-1.jpeg",
     "visible": true
+  },
+  {
+    "nombre": "Brass knuckles ",
+    "categoria": "Baterías para destilados",
+    "descripcion": "Batería con 900MAH y cargador tipo c. Preguntar por disponibilidad de colores ",
+    "precio": 40000,
+    "foto": "/img/productos/IMG_7750-1.jpeg",
+    "visible": false
   }
 ]
