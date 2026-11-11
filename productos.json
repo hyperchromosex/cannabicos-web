@@ -32,10 +32,11 @@
     "visible": true
   },
   {
-    "nombre": "Gomitas mágicas",
-    "categoria": "Gomitas mágicas",
-    "descripcion": "Varios sabores. Solo mayores de 18.",
-    "precio": 40000,
+    "nombre": "KRT",
+    "categoria": "Destilado importado",
+    "descripcion": "Cápsula con efecto superior, preguntar por cepas y sabores disponibles ",
+    "precio": 50000,
+    "foto": "/img/productos/IMG_8898.jpeg",
     "visible": true
   },
   {
