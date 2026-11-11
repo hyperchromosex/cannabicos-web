@@ -56,10 +56,11 @@
     "visible": true
   },
   {
-    "nombre": "Rascador metálico 4 piezas",
-    "categoria": "Rascadores",
-    "descripcion": "Dientes afilados y recolector de polen.",
-    "precio": 38000,
+    "nombre": "Big chief",
+    "categoria": "Destilado importado",
+    "descripcion": "Una marca reconocida por su alta concentración de THC y su inconfundible diseño, pregunta por las cepas y sabores disponibles ",
+    "precio": 50000,
+    "foto": "/img/productos/IMG_7548.jpeg",
     "visible": true
   },
   {
