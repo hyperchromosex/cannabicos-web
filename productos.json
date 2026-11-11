@@ -96,10 +96,11 @@
     "visible": true
   },
   {
-    "nombre": "Cueros king size",
-    "categoria": "Cueros",
-    "descripcion": "Papel delgado de combustión lenta.",
-    "precio": 6000,
+    "nombre": "Bates Baked Bunny ",
+    "categoria": "Pipas",
+    "descripcion": "Pipa en forma de bate con estampados femeninos y color rosado ",
+    "precio": 10000,
+    "foto": "/img/productos/IMG_8761-1.jpeg",
     "visible": true
   },
   {
