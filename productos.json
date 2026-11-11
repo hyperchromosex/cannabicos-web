@@ -64,17 +64,19 @@
     "visible": true
   },
   {
-    "nombre": "Lentes de color",
-    "categoria": "Lentes de contacto",
-    "descripcion": "Varios tonos. Pregunta disponibilidad.",
-    "precio": 70000,
+    "nombre": "Derbs & Terpy’s ",
+    "categoria": "Destilado importado",
+    "descripcion": "Destilado con muy buenos terpenos y alta concentración de THC ",
+    "precio": 50000,
+    "foto": "/img/productos/IMG_5701.jpeg",
     "visible": true
   },
   {
-    "nombre": "Filtros / tips de cartón",
-    "categoria": "Filtros",
-    "descripcion": "Libretas de filtros.",
-    "precio": 3000,
+    "nombre": "Mad labs ",
+    "categoria": "Destilado importado",
+    "descripcion": "Preguntar por cepas y sabores disponibles ",
+    "precio": 50000,
+    "foto": "/img/productos/IMG_7543.jpeg",
     "visible": true
   },
   {
