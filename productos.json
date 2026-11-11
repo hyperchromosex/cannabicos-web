@@ -174,5 +174,13 @@
     "precio": 35000,
     "foto": "/img/productos/IMG_6836-2.jpeg",
     "visible": true
+  },
+  {
+    "nombre": "NOVA ",
+    "categoria": "Baterías para destilados",
+    "descripcion": "Batería con pantalla digital, 5 voltajes intercambiables y puerto tipo C. (El valor declarado no incluye la cápsula)",
+    "precio": 60000,
+    "foto": "/img/productos/IMG_8806-1.jpeg",
+    "visible": true
   }
 ]
