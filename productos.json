@@ -112,10 +112,11 @@
     "visible": true
   },
   {
-    "nombre": "Pipa de vidrio artesanal",
+    "nombre": "Bate camuflaje ",
     "categoria": "Pipas",
-    "descripcion": "Diseños únicos hechos a mano.",
-    "precio": 45000,
+    "descripcion": "Diseños únicos fabricados en metal",
+    "precio": 10000,
+    "foto": "/img/productos/IMG_8746-1.jpeg",
     "visible": true
   },
   {
@@ -123,6 +124,7 @@
     "categoria": "Pipas",
     "descripcion": "Clásica y resistente.",
     "precio": 35000,
+    "foto": "/img/productos/IMG_8747.jpeg",
     "visible": true
   },
   {
