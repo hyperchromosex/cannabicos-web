@@ -150,5 +150,13 @@
     "precio": 70000,
     "foto": "/img/productos/IMG_8663.jpeg",
     "visible": true
+  },
+  {
+    "nombre": "Cookies Rick & Morty ",
+    "categoria": "Baterías para destilados",
+    "descripcion": "Batería cilíndrica con estampados de Rick & Morty, incluye cargador tipo C y cuenta con 3 voltajes intercambiables ",
+    "precio": 45000,
+    "foto": "/img/productos/IMG_8890.jpeg",
+    "visible": true
   }
 ]
