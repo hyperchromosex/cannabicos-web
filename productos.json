@@ -48,10 +48,11 @@
     "visible": true
   },
   {
-    "nombre": "Armador manual",
-    "categoria": "Armadores",
-    "descripcion": "Arma perfecto en segundos.",
-    "precio": 15000,
+    "nombre": "Lemon vade ",
+    "categoria": "Destilado importado",
+    "descripcion": "No te dejes confundir por su nombre, los sabores de estas cápsulas no son cítricos, poseen notas herbales para los amantes de los sabores fieles y naturales ",
+    "precio": 50000,
+    "foto": "/img/productos/IMG_8900.jpeg",
     "visible": true
   },
   {
