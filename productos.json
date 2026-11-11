@@ -2,25 +2,25 @@
   {
     "nombre": "Mini bong de vidrio",
     "categoria": "Mini bongs",
-    "descripcion": "Vidrio grueso, fácil de llevar.",
-    "precio": 95000,
-    "foto": "",
-    "visible": true
-  },
-  {
-    "nombre": "Mini bong de silicona",
-    "categoria": "Mini bongs",
-    "descripcion": "Irrompible, varios colores.",
-    "precio": 55000,
-    "foto": "",
+    "descripcion": "Vidrio estampado y manguera de silicona, fácil de portar 💚",
+    "precio": 30000,
+    "foto": "/img/productos/IMG_6242.jpeg",
     "visible": true
   },
   {
     "nombre": "Destilado nacional",
     "categoria": "Destilado nacional",
-    "descripcion": "Pregunta por sabores disponibles.",
-    "precio": 90000,
-    "foto": "",
+    "descripcion": "70% de concentración de THC, varias cepas disponibles (sativa, índica e híbrida) ",
+    "precio": 35000,
+    "foto": "/img/productos/IMG_0798.jpeg",
+    "visible": true
+  },
+  {
+    "nombre": "Runtz",
+    "categoria": "Destilado importado",
+    "descripcion": "Destilado con mayor porcentaje de THC, preguntar por cepas y sabores disponibles ",
+    "precio": 50000,
+    "foto": "/img/productos/IMG_8727.jpeg",
     "visible": true
   },
   {
@@ -28,7 +28,6 @@
     "categoria": "Destilado importado",
     "descripcion": "Pregunta por marcas disponibles.",
     "precio": 140000,
-    "foto": "",
     "visible": true
   },
   {
@@ -36,7 +35,6 @@
     "categoria": "Gomitas mágicas",
     "descripcion": "Varios sabores. Solo mayores de 18.",
     "precio": 40000,
-    "foto": "",
     "visible": true
   },
   {
@@ -44,7 +42,6 @@
     "categoria": "Palas dosificadoras",
     "descripcion": "Acero inoxidable, varias medidas.",
     "precio": 18000,
-    "foto": "",
     "visible": true
   },
   {
@@ -52,7 +49,6 @@
     "categoria": "Armadores",
     "descripcion": "Arma perfecto en segundos.",
     "precio": 15000,
-    "foto": "",
     "visible": true
   },
   {
@@ -60,7 +56,6 @@
     "categoria": "Rascadores",
     "descripcion": "Dientes afilados y recolector de polen.",
     "precio": 38000,
-    "foto": "",
     "visible": true
   },
   {
@@ -68,7 +63,6 @@
     "categoria": "Lentes de contacto",
     "descripcion": "Varios tonos. Pregunta disponibilidad.",
     "precio": 70000,
-    "foto": "",
     "visible": true
   },
   {
@@ -76,7 +70,6 @@
     "categoria": "Filtros",
     "descripcion": "Libretas de filtros.",
     "precio": 3000,
-    "foto": "",
     "visible": true
   },
   {
@@ -84,7 +77,6 @@
     "categoria": "Bandejas",
     "descripcion": "Tamaño mediano.",
     "precio": 35000,
-    "foto": "",
     "visible": true
   },
   {
@@ -92,7 +84,6 @@
     "categoria": "Crema para tatuajes",
     "descripcion": "Hidrata y protege tu tatuaje.",
     "precio": 25000,
-    "foto": "",
     "visible": true
   },
   {
@@ -100,7 +91,6 @@
     "categoria": "Cueros",
     "descripcion": "Papel delgado de combustión lenta.",
     "precio": 6000,
-    "foto": "",
     "visible": true
   },
   {
@@ -108,7 +98,6 @@
     "categoria": "Vaper nicotina",
     "descripcion": "Contiene nicotina. Solo mayores de 18.",
     "precio": 48000,
-    "foto": "",
     "visible": true
   },
   {
@@ -116,7 +105,6 @@
     "categoria": "Pipas",
     "descripcion": "Diseños únicos hechos a mano.",
     "precio": 45000,
-    "foto": "",
     "visible": true
   },
   {
@@ -124,7 +112,6 @@
     "categoria": "Pipas",
     "descripcion": "Clásica y resistente.",
     "precio": 35000,
-    "foto": "",
     "visible": true
   },
   {
@@ -132,7 +119,6 @@
     "categoria": "Baterías para destilados",
     "descripcion": "Voltaje ajustable, carga USB-C.",
     "precio": 45000,
-    "foto": "",
     "visible": true
   }
 ]
