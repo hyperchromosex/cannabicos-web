@@ -158,5 +158,13 @@
     "precio": 45000,
     "foto": "/img/productos/IMG_8890.jpeg",
     "visible": true
+  },
+  {
+    "nombre": "Discreta tipo ZIP",
+    "categoria": "Baterías para destilados",
+    "descripcion": "Batería discreta, en tamaño más pequeño para mayor discreción, incluye cargador tipo C",
+    "precio": 70000,
+    "foto": "/img/productos/IMG_8665-1.jpeg",
+    "visible": true
   }
 ]
