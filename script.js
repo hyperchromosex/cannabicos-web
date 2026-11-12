@@ -116,14 +116,21 @@ $("#searchInput").addEventListener("input", (e) => {
   pintarProductos();
 });
 
-/* ---------- Productos ---------- */
-function pintarProductos() {
+/* ---------- Productos ----------
+   Se muestran de a POR_PAGINA; el botón "Ver más" despliega los siguientes.
+   Al cambiar de categoría o buscar, se vuelve a empezar desde los primeros. */
+const POR_PAGINA = 10;
+let mostrando = POR_PAGINA;
+
+function pintarProductos(reiniciar = true) {
+  if (reiniciar) mostrando = POR_PAGINA;
   const lista = productos.filter((p) =>
     (filtroCat === "todos" || p.cat === filtroCat) &&
     (!filtroTexto || (p.nombre + " " + p.desc).toLowerCase().includes(filtroTexto)));
 
   $("#emptyMsg").hidden = lista.length > 0;
-  $("#productGrid").innerHTML = lista.map((p) => {
+  actualizarVerMas(lista.length);
+  $("#productGrid").innerHTML = lista.slice(0, mostrando).map((p) => {
     const cat = catPorId[p.cat] || { nombre: "" };
     const logo = `<img class="ph-logo" src="img/logo.png" alt="" aria-hidden="true">`;
     const imagen = p.foto
@@ -143,6 +150,22 @@ function pintarProductos() {
       </article>`;
   }).join("");
 }
+
+function actualizarVerMas(total) {
+  const mas = $("#verMas"), menos = $("#verMenos");
+  const faltan = total - mostrando;
+  mas.hidden = faltan <= 0;
+  if (faltan > 0) mas.textContent = `Ver más productos (${faltan})`;
+  menos.hidden = !(faltan <= 0 && total > POR_PAGINA);
+}
+$("#verMas").addEventListener("click", () => {
+  mostrando += POR_PAGINA;
+  pintarProductos(false);
+});
+$("#verMenos").addEventListener("click", () => {
+  pintarProductos(true);
+  $("#catalogo").scrollIntoView({ behavior: "smooth" });
+});
 
 /* ---------- Texto circular alrededor del logo ---------- */
 (function textoCircular() {
@@ -223,6 +246,7 @@ cargarProductos();
   const hero = document.querySelector(".hero");
   if (!canvas || !hero) return;
   const gl = canvas.getContext("webgl", { antialias: false, alpha: false, preserveDrawingBuffer: false });
+  window.__textura = { webgl: !!gl, quieto: window.matchMedia("(prefers-reduced-motion: reduce)").matches, cuadros: 0 };
   if (!gl) return;
   const derivadas = !!gl.getExtension("OES_standard_derivatives");
 
@@ -326,6 +350,7 @@ cargarProductos();
   }
   function bucle(ahora) {
     dibujar(ahora);
+    window.__textura.cuadros++;
     raf = !document.hidden && !quieto ? requestAnimationFrame(bucle) : 0;
   }
   function pedirDibujo() { if (!raf) raf = requestAnimationFrame((a) => { raf = 0; quieto ? dibujar(a) : bucle(a); }); }
@@ -336,4 +361,31 @@ cargarProductos();
   window.addEventListener("scroll", () => { if (quieto) pedirDibujo(); }, { passive: true });
   window.addEventListener("resize", pedirDibujo);
   bucle(performance.now());
+})();
+
+/* ---------- Modo diagnóstico ----------
+   Abre la página con ?diagnostico al final de la dirección
+   (ej. cannabicos.pages.dev/?diagnostico) para ver por qué la
+   animación se mueve o no en ese celular. No afecta a los clientes. */
+(function diagnostico() {
+  if (!/[?&]diagnostico\b/.test(location.search)) return;
+  const caja = document.createElement("div");
+  caja.className = "diag";
+  document.body.appendChild(caja);
+  const filas = [];
+  const fila = (k, v, ok) => filas.push(`<div><b>${k}:</b> <span class="${ok ? "ok" : "mal"}">${v}</span></div>`);
+  const t0 = performance.now(), c0 = (window.__textura || {}).cuadros || 0;
+  setTimeout(() => {
+    const t = window.__textura || {};
+    const fps = Math.round((((t.cuadros || 0) - c0) * 1000) / (performance.now() - t0));
+    const reducir = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    fila("Reducir movimiento (pedido por el celular o el navegador)", reducir ? "SÍ → por eso no se mueve" : "no", !reducir);
+    fila("WebGL (necesario para la textura animada)", t.webgl ? "sí" : "NO → se muestra la imagen fija", !!t.webgl);
+    fila("Cuadros por segundo de la textura", t.webgl && !reducir ? fps : "—", fps > 15);
+    fila("Ahorro de datos", navigator.connection && navigator.connection.saveData ? "activado" : "no", true);
+    fila("Navegador", navigator.userAgent.replace(/^Mozilla\/5.0 /, "").slice(0, 140), true);
+    caja.innerHTML = `<p class="diag-titulo">Diagnóstico de la animación</p>${filas.join("")}<button class="btn btn-ghost btn-sm" id="diagCerrar">Cerrar</button>`;
+    $("#diagCerrar").addEventListener("click", () => caja.remove());
+  }, 2500);
+  caja.innerHTML = "<p class='diag-titulo'>Midiendo… (2 segundos)</p>";
 })();

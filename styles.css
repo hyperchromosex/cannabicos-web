@@ -477,3 +477,25 @@ main .section h2 { text-shadow: 3px 3px 0 var(--verde-claro); }
 .product-grid .empty { grid-column: 1 / -1; color: var(--tinta); }
 
 .about-cierre { font-family: var(--font-ui); font-weight: 600; font-size: 1.2rem; color: var(--verde-oscuro); }
+
+/* ---------- Ver más productos ---------- */
+.ver-mas { display: flex; justify-content: center; gap: 1rem; margin: 2rem auto 0; max-width: 1200px; }
+.ver-mas .btn[hidden] { display: none; }
+
+/* ---------- Ayuda del mapa ---------- */
+.map-ayuda { grid-column: 2; margin: .6rem 0 0; font-size: .9rem; text-align: right; }
+@media (max-width: 860px) { .map-ayuda { grid-column: 1; text-align: left; } }
+
+/* ---------- Modo diagnóstico (?diagnostico) ---------- */
+.diag {
+  position: fixed; left: 12px; right: 12px; bottom: 12px; z-index: 2000;
+  max-width: 520px; margin: 0 auto;
+  background: var(--beige); color: var(--tinta);
+  border: 3px solid var(--tinta); border-radius: 16px; box-shadow: 5px 5px 0 var(--tinta);
+  padding: 1rem 1.1rem; font-size: .88rem; line-height: 1.4;
+}
+.diag div { margin: .3rem 0; word-break: break-word; }
+.diag .ok { color: var(--verde); font-weight: 700; }
+.diag .mal { color: #C0392B; font-weight: 700; }
+.diag-titulo { font-family: var(--font-ui); font-weight: 600; font-size: 1.05rem; margin: 0 0 .4rem; }
+.diag .btn { margin-top: .6rem; }
