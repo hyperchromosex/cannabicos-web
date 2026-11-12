@@ -119,12 +119,15 @@ $("#searchInput").addEventListener("input", (e) => {
 /* ---------- Productos ----------
    El catálogo se muestra por FILAS completas, no por número fijo de productos,
    para que la última fila siempre quede llena en cualquier pantalla.
-   Cuántas filas por tanda depende del alto de la pantalla y del alto de una
-   tarjeta: se busca mostrar más o menos PANTALLAS_POR_TANDA pantallas de
-   productos antes del botón "Ver más", para no tener que hacer tanto scroll
-   para llegar a "Somos cannábicos" y "Visítanos". */
-const PANTALLAS_POR_TANDA = 2;   // cuánto scroll (en pantallas) ocupa cada tanda
-const FILAS_MIN = 2, FILAS_MAX = 5;
+   Cada tanda ocupa más o menos PANTALLAS_POR_TANDA pantallas de scroll
+   (según el alto de la pantalla y de una tarjeta), dentro de un mínimo y un
+   máximo de filas. En una sola columna (celular) cada fila es un solo producto
+   y muy alta, así que ahí el límite es menor, para que bajar hasta
+   "Somos cannábicos" y "Visítanos" no tome demasiado. */
+const TANDA = {
+  variasColumnas: { pantallas: 3,   filasMin: 3, filasMax: 6 },
+  unaColumna:     { pantallas: 4,   filasMin: 5, filasMax: 7 },
+};
 let tandas = 1;                   // cuántas tandas se están mostrando
 let listaActual = [];
 
@@ -132,16 +135,18 @@ function columnasDelCatalogo() {
   const cols = getComputedStyle($("#productGrid")).gridTemplateColumns.split(" ").filter(Boolean).length;
   return Math.max(1, cols || 1);
 }
-function filasPorTanda() {
+function filasPorTanda(cols) {
   const grid = $("#productGrid");
   const tarjeta = grid.querySelector(".product");
   const gap = parseFloat(getComputedStyle(grid).rowGap) || 0;
   const altoFila = tarjeta ? tarjeta.offsetHeight + gap : 560;
-  const filas = Math.floor((window.innerHeight * PANTALLAS_POR_TANDA) / altoFila);
-  return Math.min(FILAS_MAX, Math.max(FILAS_MIN, filas));
+  const t = cols === 1 ? TANDA.unaColumna : TANDA.variasColumnas;
+  const filas = Math.floor((window.innerHeight * t.pantallas) / altoFila);
+  return Math.min(t.filasMax, Math.max(t.filasMin, filas));
 }
 function cuantosMostrar() {
-  return columnasDelCatalogo() * filasPorTanda() * tandas;
+  const cols = columnasDelCatalogo();
+  return cols * filasPorTanda(cols) * tandas;
 }
 
 function pintarProductos(reiniciar = true) {
@@ -173,7 +178,7 @@ function dibujarTarjetas(lista) {
           <h3>${escapar(p.nombre)}</h3>
           <p>${escapar(p.desc)}</p>
           <p class="price">${precio}</p>
-          <a class="btn btn-green btn-sm" href="${linkWhatsApp(msg)}" target="_blank" rel="noopener">Pedir<span class="solo-ancho"> por WhatsApp</span></a>
+          <a class="btn btn-green btn-sm" href="${linkWhatsApp(msg)}" target="_blank" rel="noopener">Pedir por WhatsApp</a>
         </div>
       </article>`;
   }).join("");
