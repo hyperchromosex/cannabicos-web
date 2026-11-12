@@ -117,20 +117,48 @@ $("#searchInput").addEventListener("input", (e) => {
 });
 
 /* ---------- Productos ----------
-   Se muestran de a POR_PAGINA; el botón "Ver más" despliega los siguientes.
-   Al cambiar de categoría o buscar, se vuelve a empezar desde los primeros. */
-const POR_PAGINA = 10;
-let mostrando = POR_PAGINA;
+   El catálogo se muestra por FILAS completas, no por número fijo de productos,
+   para que la última fila siempre quede llena en cualquier pantalla.
+   Cuántas filas por tanda depende del alto de la pantalla y del alto de una
+   tarjeta: se busca mostrar más o menos PANTALLAS_POR_TANDA pantallas de
+   productos antes del botón "Ver más", para no tener que hacer tanto scroll
+   para llegar a "Somos cannábicos" y "Visítanos". */
+const PANTALLAS_POR_TANDA = 2;   // cuánto scroll (en pantallas) ocupa cada tanda
+const FILAS_MIN = 2, FILAS_MAX = 5;
+let tandas = 1;                   // cuántas tandas se están mostrando
+let listaActual = [];
+
+function columnasDelCatalogo() {
+  const cols = getComputedStyle($("#productGrid")).gridTemplateColumns.split(" ").filter(Boolean).length;
+  return Math.max(1, cols || 1);
+}
+function filasPorTanda() {
+  const grid = $("#productGrid");
+  const tarjeta = grid.querySelector(".product");
+  const gap = parseFloat(getComputedStyle(grid).rowGap) || 0;
+  const altoFila = tarjeta ? tarjeta.offsetHeight + gap : 560;
+  const filas = Math.floor((window.innerHeight * PANTALLAS_POR_TANDA) / altoFila);
+  return Math.min(FILAS_MAX, Math.max(FILAS_MIN, filas));
+}
+function cuantosMostrar() {
+  return columnasDelCatalogo() * filasPorTanda() * tandas;
+}
 
 function pintarProductos(reiniciar = true) {
-  if (reiniciar) mostrando = POR_PAGINA;
-  const lista = productos.filter((p) =>
+  if (reiniciar) tandas = 1;
+  listaActual = productos.filter((p) =>
     (filtroCat === "todos" || p.cat === filtroCat) &&
     (!filtroTexto || (p.nombre + " " + p.desc).toLowerCase().includes(filtroTexto)));
+  $("#emptyMsg").hidden = listaActual.length > 0;
+  // primero se pinta una fila para medir la tarjeta, luego se completa la tanda
+  if (!$("#productGrid").querySelector(".product")) dibujarTarjetas(listaActual.slice(0, columnasDelCatalogo()));
+  const n = cuantosMostrar();
+  dibujarTarjetas(listaActual.slice(0, n));
+  actualizarVerMas(listaActual.length, n);
+}
 
-  $("#emptyMsg").hidden = lista.length > 0;
-  actualizarVerMas(lista.length);
-  $("#productGrid").innerHTML = lista.slice(0, mostrando).map((p) => {
+function dibujarTarjetas(lista) {
+  $("#productGrid").innerHTML = lista.map((p) => {
     const cat = catPorId[p.cat] || { nombre: "" };
     const logo = `<img class="ph-logo" src="img/logo.png" alt="" aria-hidden="true">`;
     const imagen = p.foto
@@ -145,22 +173,30 @@ function pintarProductos(reiniciar = true) {
           <h3>${escapar(p.nombre)}</h3>
           <p>${escapar(p.desc)}</p>
           <p class="price">${precio}</p>
-          <a class="btn btn-green btn-sm" href="${linkWhatsApp(msg)}" target="_blank" rel="noopener">Pedir por WhatsApp</a>
+          <a class="btn btn-green btn-sm" href="${linkWhatsApp(msg)}" target="_blank" rel="noopener">Pedir<span class="solo-ancho"> por WhatsApp</span></a>
         </div>
       </article>`;
   }).join("");
 }
 
-function actualizarVerMas(total) {
+function actualizarVerMas(total, mostrados) {
   const mas = $("#verMas"), menos = $("#verMenos");
-  const faltan = total - mostrando;
+  const faltan = total - mostrados;
   mas.hidden = faltan <= 0;
   if (faltan > 0) mas.textContent = `Ver más productos (${faltan})`;
-  menos.hidden = !(faltan <= 0 && total > POR_PAGINA);
+  menos.hidden = tandas <= 1;     // se puede recoger apenas se haya abierto más de una tanda
 }
 $("#verMas").addEventListener("click", () => {
-  mostrando += POR_PAGINA;
+  tandas++;
   pintarProductos(false);
+});
+// al girar el celular o cambiar el tamaño de la ventana, se recalcula manteniendo las tandas abiertas
+let esperaResize, anchoAnterior = window.innerWidth;
+window.addEventListener("resize", () => {
+  if (window.innerWidth === anchoAnterior) return;   // en celular, la barra del navegador cambia el alto al hacer scroll
+  anchoAnterior = window.innerWidth;
+  clearTimeout(esperaResize);
+  esperaResize = setTimeout(() => { if (productos.length) pintarProductos(false); }, 200);
 });
 $("#verMenos").addEventListener("click", () => {
   pintarProductos(true);
@@ -284,7 +320,9 @@ cargarProductos();
       vec3 g; g.x = a0.x * x0.x + h.x * x0.y; g.yz = a0.yz * x12.xz + h.yz * x12.yw;
       return 130.0 * dot(m, g);
     }
-    float fbm(vec2 p){ return 0.72*snoise(p) + 0.24*snoise(p*1.97 + 7.1) + 0.04*snoise(p*4.01 - 3.3); }
+    // 2 capas de ruido (antes 3): casi igual a la vista y ~33% menos trabajo por pixel
+    float fbm(vec2 p){ return 0.75*snoise(p) + 0.25*snoise(p*1.97 + 7.1); }
+    float grano(vec2 c){ return fract(sin(dot(c, vec2(12.9898, 78.233))) * 43758.5453); }
     float paso(float borde, float v){
       ${derivadas ? "float w = max(fwidth(v) * 0.9, 0.002);" : "float w = 0.012;"}
       return smoothstep(borde - w, borde + w, v);
@@ -304,6 +342,7 @@ cargarProductos();
       vec3 col = mix(mix(mix(CREMA, NARANJA, o), VERDE_G, gg), VERDE, gv);
       // fuera de la cabecera: misma textura, suavizada con un velo beige
       col = mix(col, BEIGE, uVelo * step(uHeroFin, y));
+      col -= (grano(floor(css)) - 0.5) * 0.045;   // grano de impresión vintage
       gl_FragColor = vec4(col, 1.0);
     }`;
 
@@ -324,43 +363,82 @@ cargarProductos();
   const u = (n) => gl.getUniformLocation(prog, n);
   const uRes = u("uRes"), uTime = u("uTime"), uEscala = u("uEscala"), uScroll = u("uScroll"), uHeroFin = u("uHeroFin"), uVelo = u("uVelo");
 
-  const ESCALA = window.__ESCALA_TEXTURA || 0.6;       // resolución relativa (menos = más liviano)
+  /* Calidad automática: empieza en el nivel más alto y, si el celular no
+     alcanza a dibujar fluido (menos de ~40 cuadros por segundo), baja de nivel.
+     El nivel se recuerda en ese celular para la próxima visita. */
+  const NIVELES = [
+    { escala: 0.6,  salto: 1 },   // 0: máxima calidad, 60 cuadros/s
+    { escala: 0.45, salto: 1 },   // 1: menos resolución
+    { escala: 0.4,  salto: 2 },   // 2: textura a 30 cuadros/s (se mueve lento, casi no se nota)
+    { escala: 0.32, salto: 3 },   // 3: 20 cuadros/s
+    { escala: 0.3,  salto: 0 },   // 4: textura quieta (solo se redibuja al hacer scroll)
+  ];
+  const CLAVE = "cannabicos_nivel_textura";
+  let nivel = 0;
+  try { nivel = Math.min(NIVELES.length - 1, Math.max(0, parseInt(localStorage.getItem(CLAVE), 10) || 0)); } catch (e) {}
+  if (window.__ESCALA_TEXTURA) NIVELES[nivel] = { escala: window.__ESCALA_TEXTURA, salto: 1 };
   const quieto = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-  let raf = 0;
+  window.__textura.nivel = nivel;
+  let raf = 0, cuadro = 0, ultimoScroll = -1, tiempoCongelado = 0;
   const t0 = performance.now(), offset = Math.random() * 100;
+  // medición de fluidez
+  let medidos = 0, sumaMs = 0, ultimoRaf = 0;
 
   function ajustar() {
-    const w = Math.max(1, Math.round(canvas.clientWidth * ESCALA));
-    const h = Math.max(1, Math.round(canvas.clientHeight * ESCALA));
+    const esc = NIVELES[nivel].escala;
+    const w = Math.max(1, Math.round(canvas.clientWidth * esc));
+    const h = Math.max(1, Math.round(canvas.clientHeight * esc));
     if (canvas.width !== w || canvas.height !== h) { canvas.width = w; canvas.height = h; gl.viewport(0, 0, w, h); }
   }
   function dibujar(ahora) {
     ajustar();
+    const animada = !quieto && NIVELES[nivel].salto > 0;
+    if (animada) tiempoCongelado = (ahora - t0) / 1000;
     gl.uniform2f(uRes, canvas.width, canvas.height);
     gl.uniform1f(uEscala, canvas.width / Math.max(1, canvas.clientWidth));
     gl.uniform1f(uScroll, window.scrollY);
     gl.uniform1f(uHeroFin, hero.getBoundingClientRect().bottom + window.scrollY);
     gl.uniform1f(uVelo, VELO);
-    gl.uniform1f(uTime, offset + (quieto ? 0 : (ahora - t0) / 1000));
+    gl.uniform1f(uTime, offset + tiempoCongelado);
     gl.drawArrays(gl.TRIANGLES, 0, 3);
+    ultimoScroll = window.scrollY;
     if (!canvas.classList.contains("ready")) {
       canvas.classList.add("ready");
       document.documentElement.classList.add("textura-viva");
     }
   }
-  function bucle(ahora) {
-    dibujar(ahora);
-    window.__textura.cuadros++;
-    raf = !document.hidden && !quieto ? requestAnimationFrame(bucle) : 0;
+  function medir(ahora) {
+    if (ultimoRaf) { sumaMs += ahora - ultimoRaf; medidos++; }
+    ultimoRaf = ahora;
+    if (medidos >= 90) {                         // ~1,5 s de muestra
+      const promedio = sumaMs / medidos;
+      if (promedio > 24 && nivel < NIVELES.length - 1) {
+        nivel++;
+        window.__textura.nivel = nivel;
+        try { localStorage.setItem(CLAVE, String(nivel)); } catch (e) {}
+      }
+      medidos = 0; sumaMs = 0;
+    }
   }
-  function pedirDibujo() { if (!raf) raf = requestAnimationFrame((a) => { raf = 0; quieto ? dibujar(a) : bucle(a); }); }
+  function bucle(ahora) {
+    medir(ahora);
+    const salto = NIVELES[nivel].salto;
+    cuadro++;
+    // se dibuja en su turno, o siempre que hubo scroll (para que la textura no "tiemble" respecto al contenido)
+    if ((salto > 0 && cuadro % salto === 0) || window.scrollY !== ultimoScroll) {
+      dibujar(ahora);
+      window.__textura.cuadros++;
+    }
+    raf = !document.hidden ? requestAnimationFrame(bucle) : 0;
+  }
+  function pedirDibujo() { if (!raf) raf = requestAnimationFrame((a) => { raf = 0; quieto ? dibujar(a) : (ultimoRaf = 0, bucle(a)); }); }
 
   // Pausa cuando la pestaña está oculta (ahorra batería)
   document.addEventListener("visibilitychange", () => { if (!document.hidden) pedirDibujo(); });
   // Sin animación (reducir movimiento): solo se redibuja al hacer scroll o cambiar tamaño
   window.addEventListener("scroll", () => { if (quieto) pedirDibujo(); }, { passive: true });
   window.addEventListener("resize", pedirDibujo);
-  bucle(performance.now());
+  if (quieto) dibujar(performance.now()); else bucle(performance.now());
 })();
 
 /* ---------- Modo diagnóstico ----------
@@ -382,6 +460,7 @@ cargarProductos();
     fila("Reducir movimiento (pedido por el celular o el navegador)", reducir ? "SÍ → por eso no se mueve" : "no", !reducir);
     fila("WebGL (necesario para la textura animada)", t.webgl ? "sí" : "NO → se muestra la imagen fija", !!t.webgl);
     fila("Cuadros por segundo de la textura", t.webgl && !reducir ? fps : "—", fps > 15);
+    fila("Nivel de calidad automático (0 = máximo, 4 = textura quieta)", t.nivel ?? "—", (t.nivel ?? 0) < 4);
     fila("Ahorro de datos", navigator.connection && navigator.connection.saveData ? "activado" : "no", true);
     fila("Navegador", navigator.userAgent.replace(/^Mozilla\/5.0 /, "").slice(0, 140), true);
     caja.innerHTML = `<p class="diag-titulo">Diagnóstico de la animación</p>${filas.join("")}<button class="btn btn-ghost btn-sm" id="diagCerrar">Cerrar</button>`;
