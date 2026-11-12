@@ -127,7 +127,7 @@ function pintarProductos() {
     const cat = catPorId[p.cat] || { nombre: "" };
     const logo = `<img class="ph-logo" src="img/logo.png" alt="" aria-hidden="true">`;
     const imagen = p.foto
-      ? `<img class="foto" src="${escapar(p.foto)}" alt="${escapar(p.nombre)}" loading="lazy">`
+      ? `<img class="foto" src="${escapar(p.foto)}" alt="${escapar(p.nombre)}" loading="lazy" decoding="async" width="800" height="800">`
       : logo;
     const precio = p.precio ? formatoPeso(p.precio) : "Consultar precio";
     const msg = `¡Hola Cannábicos! 👋 Me interesa: ${p.nombre}. ¿Lo tienen disponible?`;

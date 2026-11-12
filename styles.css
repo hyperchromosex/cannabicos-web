@@ -288,6 +288,14 @@ main .section h2 { text-shadow: 3px 3px 0 var(--verde-claro); }
 .cat-flecha.next { right: -14px; }
 .cat-flecha:disabled { opacity: 0; pointer-events: none; }
 @media (hover: none), (max-width: 640px) { .cat-flecha { display: none; } }  /* en celular se desliza con el dedo */
+/* celular: 3 categorías a lo ancho */
+@media (max-width: 640px) {
+  .cat-scroll { gap: .55rem; }
+  .cat-card { flex-basis: calc((100% - 2 * .55rem) / 3); border-width: 2px; border-radius: 14px; box-shadow: 3px 3px 0 var(--tinta); }
+  .cat-img { border-bottom-width: 2px; }
+  .cat-img img { padding: 6%; }
+  .cat-name { font-size: .74rem; min-height: 2.9em; padding: .35rem .3rem; }
+}
 
 /* ---------- Filtros y catálogo ---------- */
 .filters { max-width: 1200px; margin: 0 auto 2rem; display: grid; gap: 1rem; }
@@ -330,14 +338,15 @@ main .section h2 { text-shadow: 3px 3px 0 var(--verde-claro); }
   display: flex; flex-direction: column;
 }
 .product-img {
-  aspect-ratio: 4 / 3;
+  aspect-ratio: 1 / 1;              /* foto siempre cuadrada */
+  overflow: hidden;
   display: grid; place-items: center;
   border-bottom: 3px solid var(--tinta);
   background:
     repeating-radial-gradient(circle at 50% 120%, var(--durazno) 0 18px, var(--naranja-claro) 18px 36px);
   position: relative;
 }
-.product-img img { width: 100%; height: 100%; object-fit: cover; }
+.product-img img { width: 100%; height: 100%; object-fit: cover; object-position: 50% 50%; } /* recorta desde el centro, sin deformar */
 .product-img .ph-logo { width: 42%; height: auto; object-fit: contain; opacity: .9; filter: drop-shadow(4px 4px 0 var(--tinta)); }
 .product-img .tag {
   position: absolute; top: .7rem; left: .7rem;
