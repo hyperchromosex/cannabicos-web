@@ -84,7 +84,7 @@
     "categoria": "Gomitas mágicas",
     "descripcion": "50mg de THC por cada gomita, valor por unidad ",
     "precio": 8000,
-    "foto": "/img/productos/IMG_8859-1.jpeg",
+    "foto": "/img/productos/IMG_8413.jpeg",
     "visible": true
   },
   {
@@ -205,6 +205,13 @@
     "descripcion": "Las gomas más potentes🔥 disfruta de los 500mg que contiene cada gomita y elévate a otro nivel (precio por unidad, no el frasco completo) ",
     "precio": 15000,
     "foto": "/img/productos/IMG_8912.jpeg",
+    "visible": true
+  },
+  {
+    "nombre": "Sumo ",
+    "categoria": "Gomitas mágicas",
+    "descripcion": "420mg de pura diversión en cada goma (precio por unidad, no el frasco completo) ",
+    "foto": "/img/productos/IMG_7503.jpeg",
     "visible": true
   }
 ]
