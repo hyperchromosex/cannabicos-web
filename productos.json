@@ -61,7 +61,7 @@
     "descripcion": "Una marca reconocida por su alta concentración de THC y su inconfundible diseño, pregunta por las cepas y sabores disponibles ",
     "precio": 50000,
     "foto": "/img/productos/IMG_7548.jpeg",
-    "visible": true
+    "visible": false
   },
   {
     "nombre": "Derbs & Terpy’s ",
@@ -69,7 +69,7 @@
     "descripcion": "Destilado con muy buenos terpenos y alta concentración de THC ",
     "precio": 50000,
     "foto": "/img/productos/IMG_5701.jpeg",
-    "visible": true
+    "visible": false
   },
   {
     "nombre": "Mad labs ",
@@ -77,7 +77,7 @@
     "descripcion": "Preguntar por cepas y sabores disponibles ",
     "precio": 50000,
     "foto": "/img/productos/IMG_7543.jpeg",
-    "visible": true
+    "visible": false
   },
   {
     "nombre": "HAZE",
