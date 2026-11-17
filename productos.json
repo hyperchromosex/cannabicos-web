@@ -213,5 +213,13 @@
     "descripcion": "420mg de pura diversión en cada goma (precio por unidad, no el frasco completo) ",
     "foto": "/img/productos/IMG_7503.jpeg",
     "visible": true
+  },
+  {
+    "nombre": "Caricaturas en silicona",
+    "categoria": "Palas dosificadoras",
+    "descripcion": "Palas con caricaturas divertidas fabricadas en silicona ",
+    "precio": 15000,
+    "foto": "/img/productos/IMG_8760-1.jpeg",
+    "visible": true
   }
 ]
