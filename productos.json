@@ -228,5 +228,12 @@
     "descripcion": "Fabricadas en metal, preguntar y confirmar los diseños disponibles  ✅",
     "foto": "/img/productos/IMG_7872-1.jpeg",
     "visible": true
+  },
+  {
+    "nombre": "Fruitors",
+    "categoria": "Cueros",
+    "descripcion": "Papeles para armar con sabores, preguntar por los sabores disponibles ",
+    "foto": "/img/productos/99F7CEC8-AF19-4066-ADC2-8322C697290E-1.jpeg",
+    "visible": true
   }
 ]
