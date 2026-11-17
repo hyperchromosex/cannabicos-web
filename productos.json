@@ -29,7 +29,7 @@
     "descripcion": "Destilado full spectrum, sin añadidos químicos y alto porcentaje de THC ",
     "precio": 50000,
     "foto": "/img/productos/IMG_8877.jpeg",
-    "visible": true
+    "visible": false
   },
   {
     "nombre": "KRT",
@@ -190,5 +190,13 @@
     "precio": 40000,
     "foto": "/img/productos/IMG_7750-1.jpeg",
     "visible": false
+  },
+  {
+    "nombre": "HAZE ",
+    "categoria": "Destilado importado",
+    "descripcion": "Destilado de la marca HAZE, full spectrum y alta concentración de THC ",
+    "precio": 50000,
+    "foto": "/img/productos/IMG_8918.jpeg",
+    "visible": true
   }
 ]
