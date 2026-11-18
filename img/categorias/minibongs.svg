@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 240 240">
+<!-- persona de perfil, con los labios en la boquilla -->
+<g transform="translate(34 10) scale(.88)"><path d="M24 118 C18 100 8 84 8 60 C8 28 32 8 58 8 C80 8 92 22 92 40 L100 54 C102 58 98 60 94 60 L94 64 C97 66 97 70 94 72 C96 76 94 82 88 84 C84 90 76 92 66 92 L66 118 Z" fill="#0F3313"/>
+  <path d="M60 40 q7 -5 14 0" fill="none" stroke="#FFFFFF" stroke-width="5" stroke-linecap="round"/></g>
+<!-- bong (con borde claro para separarlo de la cabeza) -->
+<g fill="#0F3313" stroke="#FFFFFF" stroke-width="5" paint-order="stroke" stroke-linejoin="round">
+  <path d="M126 150 l-30 -26 a6 6 0 0 1 -1 -9 l8 -9 a6 6 0 0 1 9 -1 l30 26 Z"/>
+  <rect x="122" y="58" width="44" height="16" rx="7"/>
+  <rect x="130" y="70" width="28" height="70" rx="4"/>
+  <path d="M130 132 Q100 152 100 182 a44 44 0 0 0 88 0 Q188 152 158 132 Z"/>
+  <rect x="112" y="214" width="64" height="16" rx="7"/>
+</g>
+<rect x="128" y="88" width="32" height="6" fill="#F38323"/>
+<path d="M174 172 Q176 198 152 206" fill="none" stroke="#FFFFFF" stroke-width="7" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M144 100 L144 124" fill="none" stroke="#FFFFFF" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/>
+<circle cx="132" cy="190" r="5" fill="#FFFFFF"/><circle cx="150" cy="178" r="3.5" fill="#FFFFFF"/><circle cx="122" cy="172" r="3" fill="#FFFFFF"/>
+<path d="M206 52 Q208.16 61.84 218 64 Q208.16 66.16 206 76 Q203.84 66.16 194 64 Q203.84 61.84 206 52Z" fill="#F38323"/><path d="M32 181 Q33.62 188.38 41 190 Q33.62 191.62 32 199 Q30.38 191.62 23 190 Q30.38 188.38 32 181Z" fill="#3E9B3F"/>
+</svg>

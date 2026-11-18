@@ -1,5 +1,10 @@
 # Configuración del panel de Pages CMS (pagescms.org)
-# Define qué puede editar tu hermana desde el panel.
+# Todo el catálogo vive en datos/catalogo.json:
+#   Catálogo
+#   └─ Categorías (se pueden agregar, quitar y ordenar)
+#      └─ Productos de cada categoría (se pueden agregar, quitar y ordenar)
+#         └─ Nombre, descripción, precio, foto, mostrar
+# El orden en el panel es el orden en la página.
 
 media:
   input: img/productos
@@ -7,52 +12,57 @@ media:
   extensions: [jpg, jpeg, png, webp]
 
 content:
-  - name: productos
-    label: Productos
+  - name: catalogo
+    label: Catálogo
     type: file
-    path: productos.json
+    path: datos/catalogo.json
     format: json
-    list: true
     fields:
-      - name: nombre
-        label: Nombre del producto
-        type: string
-        required: true
-      - name: categoria
-        label: Categoría
-        type: select
-        required: true
-        options:
-          values:
-            - "Mini bongs"
-            - "Destilado nacional"
-            - "Destilado importado"
-            - "Gomitas mágicas"
-            - "Palas dosificadoras"
-            - "Armadores"
-            - "Rascadores"
-            - "Lentes de contacto"
-            - "Filtros"
-            - "Bandejas"
-            - "Crema para tatuajes"
-            - "Cueros"
-            - "Vaper nicotina"
-            - "Pipas"
-            - "Baterías para destilados"
-      - name: descripcion
-        label: Descripción corta
-        type: text
-        options:
-          maxlength: 160
-      - name: precio
-        label: Precio en pesos (vacío = "Consultar precio")
-        type: number
-        options:
-          min: 0
-      - name: foto
-        label: Foto
-        type: image
-      - name: visible
-        label: Mostrar en la página
-        type: boolean
-        default: true
+      - name: categorias
+        label: Categorías
+        type: object
+        list:
+          collapsible:
+            collapsed: true
+            summary: "{nombre}"
+        fields:
+          - name: nombre
+            label: Nombre de la categoría
+            type: string
+            required: true
+          - name: imagen
+            label: Imagen de la categoría (opcional; si no tiene, sale el logo)
+            type: image
+          - name: visible
+            label: Mostrar esta categoría en la página
+            type: boolean
+            default: true
+          - name: productos
+            label: Productos
+            type: object
+            list:
+              collapsible:
+                collapsed: true
+                summary: "{nombre}"
+            fields:
+              - name: nombre
+                label: Nombre del producto
+                type: string
+                required: true
+              - name: descripcion
+                label: Descripción corta
+                type: text
+                options:
+                  maxlength: 160
+              - name: precio
+                label: Precio en pesos (vacío = "Consultar precio")
+                type: number
+                options:
+                  min: 0
+              - name: foto
+                label: Foto
+                type: image
+              - name: visible
+                label: Mostrar en la página
+                type: boolean
+                default: true

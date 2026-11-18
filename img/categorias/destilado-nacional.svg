@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 240 240"><g transform="translate(-18 0)" fill="#0F3313">
+  <path d="M104 30 h32 l-4 26 h-24 Z"/>
+  <rect x="96" y="54" width="48" height="12" rx="4"/>
+  <rect x="98" y="64" width="44" height="104" rx="8"/>
+  <rect x="94" y="166" width="52" height="22" rx="5"/>
+  <rect x="104" y="186" width="32" height="26" rx="3"/>
+  <rect x="100" y="194" width="40" height="5" rx="2"/><rect x="100" y="204" width="40" height="5" rx="2"/>
+</g>
+<rect x="88" y="104" width="28" height="58" rx="6" fill="#F38323"/>
+<path d="M92 76 L92 96" fill="none" stroke="#FFFFFF" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/>
+<g transform="translate(160 64) rotate(12)">
+  <clipPath id="c"><path d="M0 14 C0 -6 28 -8 30 12 C32 -8 60 -6 60 14 C60 36 30 52 30 56 C30 52 0 36 0 14 Z"/></clipPath>
+  <g clip-path="url(#c)"><rect x="-2" y="-10" width="64" height="34" fill="#F7C536"/><rect x="-2" y="24" width="64" height="16" fill="#2B59A8"/><rect x="-2" y="40" width="64" height="20" fill="#D9363E"/></g>
+  <path d="M0 14 C0 -6 28 -8 30 12 C32 -8 60 -6 60 14 C60 36 30 52 30 56 C30 52 0 36 0 14 Z" fill="none" stroke="#0F3313" stroke-width="6" stroke-linejoin="round"/>
+</g></svg>

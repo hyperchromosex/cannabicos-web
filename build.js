@@ -5,8 +5,9 @@
    2. Convierte cada foto de img/productos/ en una versión
       cuadrada de 800×800 px en WebP, recortada desde el centro
       (en X y en Y), y mucho más liviana (~50–100 KB en vez de 2–3 MB).
-   3. Cambia productos.json (solo dentro de dist/) para que el
-      catálogo use esas versiones livianas.
+   3. Cambia datos/catalogo.json (solo dentro de dist/) para que el
+      catálogo use esas versiones livianas. Las imágenes de categoría
+      que sean fotos también se optimizan (las 3D ya son livianas).
    Las fotos originales del repositorio NO se tocan.
    Si una foto no se puede convertir, se usa la original.
    ========================================================= */
@@ -44,13 +45,26 @@ async function main() {
   copiar(RAIZ, DIST);
   fs.mkdirSync(path.join(DIST, CARPETA_OPT), { recursive: true });
 
-  const productos = JSON.parse(fs.readFileSync(path.join(RAIZ, "productos.json"), "utf8"));
+  const RUTA_CATALOGO = "datos/catalogo.json";
+  const catalogo = JSON.parse(fs.readFileSync(path.join(RAIZ, RUTA_CATALOGO), "utf8"));
+  const categorias = Array.isArray(catalogo.categorias) ? catalogo.categorias : [];
+  // fotos a optimizar: las de los productos y las imágenes de categoría que sean fotos
+  const fotos = [];   // cada una: { ruta, poner(nuevaRuta) }
+  for (const c of categorias) {
+    for (const p of Array.isArray(c.productos) ? c.productos : []) {
+      if (p && p.foto) fotos.push({ ruta: p.foto, poner: (v) => { p.foto = v; } });
+    }
+    if (c && c.imagen && !String(c.imagen).includes("img/categorias/")) {
+      fotos.push({ ruta: c.imagen, poner: (v) => { c.imagen = v; } });
+    }
+  }
+  console.log(`✔ Catálogo: ${categorias.length} categorías, ${fotos.length} fotos`);
   let ok = 0, fallos = 0, antes = 0, despues = 0;
   const hechas = new Map();
 
-  for (const p of productos) {
-    if (!p || !p.foto || /^https?:\/\//.test(p.foto)) continue;
-    const rel = String(p.foto).replace(/^\//, "");
+  for (const f of fotos) {
+    if (/^https?:\/\//.test(f.ruta)) continue;
+    const rel = String(f.ruta).replace(/^\//, "");
     const origen = path.join(RAIZ, rel);
     if (!fs.existsSync(origen)) { console.warn("⚠ No existe la foto:", rel); continue; }
     try {
@@ -67,14 +81,14 @@ async function main() {
         despues += fs.statSync(path.join(DIST, destinoRel)).size;
         ok++;
       }
-      p.foto = "/" + destinoRel;
+      f.poner("/" + destinoRel);
     } catch (err) {
       fallos++;
       console.warn("⚠ No se pudo optimizar", rel, "→ se usa la original.", err.message);
     }
   }
 
-  fs.writeFileSync(path.join(DIST, "productos.json"), JSON.stringify(productos, null, 2));
+  fs.writeFileSync(path.join(DIST, RUTA_CATALOGO), JSON.stringify(catalogo, null, 2));
   const mb = (n) => (n / 1e6).toFixed(1) + " MB";
   console.log(`✔ Fotos optimizadas: ${ok} (fallos: ${fallos}) · ${mb(antes)} → ${mb(despues)}`);
 }

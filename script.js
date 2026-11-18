@@ -1,41 +1,23 @@
 /* =========================================================
    CANNABICOS · Lógica de la página
    ---------------------------------------------------------
-   Los productos se editan desde el panel (Pages CMS) y se guardan
-   en productos.json. Las categorías se cambian aquí abajo.
+   Las categorías y los productos se editan desde el panel (Pages CMS)
+   y se guardan en datos/catalogo.json. Aquí no hay que cambiar nada
+   para agregar o quitar categorías o productos.
    ========================================================= */
 
 const WHATSAPP = "573244259048"; // número con indicativo de Colombia (57)
 
 
-/* ---------- Categorías ----------
-   Cada categoría tiene su imagen 3D en img/categorias/. Si agregas una
-   categoría nueva sin imagen, se muestra el logo en su lugar. */
-const CATEGORIAS = [
-  { id: "minibongs",            nombre: "Mini bongs", img: "img/categorias/minibongs.webp" },
-  { id: "destilado-nacional",   nombre: "Destilado nacional", img: "img/categorias/destilado-nacional.webp" },
-  { id: "destilado-importado",  nombre: "Destilado importado", img: "img/categorias/destilado-importado.webp" },
-  { id: "gomitas",              nombre: "Gomitas mágicas", img: "img/categorias/gomitas.webp" },
-  { id: "palas",                nombre: "Palas dosificadoras", img: "img/categorias/palas.webp" },
-  { id: "armadores",            nombre: "Armadores", img: "img/categorias/armadores.webp" },
-  { id: "rascadores",           nombre: "Rascadores", img: "img/categorias/rascadores.webp" },
-  { id: "lentes",               nombre: "Lentes de contacto", img: "img/categorias/lentes.webp" },
-  { id: "filtros",              nombre: "Filtros", img: "img/categorias/filtros.webp" },
-  { id: "bandejas",             nombre: "Bandejas", img: "img/categorias/bandejas.webp" },
-  { id: "crema-tatuajes",       nombre: "Crema para tatuajes", img: "img/categorias/crema-tatuajes.webp" },
-  { id: "cueros",               nombre: "Cueros", img: "img/categorias/cueros.webp" },
-  { id: "vapers",               nombre: "Vaper nicotina", img: "img/categorias/vapers.webp" },
-  { id: "pipas",                nombre: "Pipas", img: "img/categorias/pipas.webp" },
-  { id: "baterias",             nombre: "Baterías para destilados", img: "img/categorias/baterias.webp" },
-];
-
-
+/* Las categorías vienen del catálogo (datos/catalogo.json). Si una categoría
+   no tiene imagen, se muestra el logo. */
+let CATEGORIAS = [];
 
 /* ================= No hace falta editar debajo de esta línea ================= */
 
 const $ = (s) => document.querySelector(s);
 const formatoPeso = (n) => "$" + n.toLocaleString("es-CO");
-const catPorId = Object.fromEntries(CATEGORIAS.map((c) => [c.id, c]));
+let catPorId = {};
 const normalizar = (t) => String(t || "").normalize("NFD").replace(/[\u0300-\u036f]/g, "").trim().toLowerCase();
 const escapar = (t) => String(t ?? "").replace(/[&<>"']/g, (ch) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[ch]));
 let productos = [];
@@ -69,12 +51,20 @@ nav.querySelectorAll("a").forEach((a) => a.addEventListener("click", () => nav.c
 
 /* ---------- Categorías ---------- */
 function pintarCategorias() {
-  const grid = $("#catGrid");
-  grid.innerHTML = CATEGORIAS.map((c) => `
-    <button class="cat-card" data-cat="${c.id}">
-      <span class="cat-img"><img src="${c.img || "img/logo.png"}" alt="" loading="lazy" width="480" height="480"></span>
-      <span class="cat-name">${c.nombre}</span>
+  $("#catGrid").innerHTML = CATEGORIAS.map((c) => `
+    <button class="cat-card" data-cat="${escapar(c.id)}">
+      <span class="cat-img"><img class="${c.esFoto ? "cat-foto" : ""}" src="${escapar(c.img || "img/logo.png")}" alt="" loading="lazy" width="480" height="480"></span>
+      <span class="cat-name">${escapar(c.nombre)}</span>
     </button>`).join("");
+  actualizarFlechas();
+}
+const actualizarFlechas = () => {
+  const grid = $("#catGrid");
+  $("#catPrev").disabled = grid.scrollLeft < 8;
+  $("#catNext").disabled = grid.scrollLeft + grid.clientWidth > grid.scrollWidth - 8;
+};
+(function configurarCarrusel() {
+  const grid = $("#catGrid");
   // si falta una imagen, se muestra el logo
   grid.addEventListener("error", (e) => {
     if (e.target.tagName === "IMG" && !e.target.src.endsWith("img/logo.png")) e.target.src = "img/logo.png";
@@ -90,14 +80,9 @@ function pintarCategorias() {
   const paso = () => Math.max(grid.clientWidth * 0.8, 200);
   $("#catPrev").addEventListener("click", () => grid.scrollBy({ left: -paso(), behavior: "smooth" }));
   $("#catNext").addEventListener("click", () => grid.scrollBy({ left: paso(), behavior: "smooth" }));
-  const actualizarFlechas = () => {
-    $("#catPrev").disabled = grid.scrollLeft < 8;
-    $("#catNext").disabled = grid.scrollLeft + grid.clientWidth > grid.scrollWidth - 8;
-  };
   grid.addEventListener("scroll", actualizarFlechas, { passive: true });
   window.addEventListener("resize", actualizarFlechas);
-  actualizarFlechas();
-}
+})();
 
 /* ---------- Chips de filtro ---------- */
 function pintarChips() {
@@ -224,7 +209,7 @@ $("#verMenos").addEventListener("click", () => {
   });
 })();
 
-/* ---------- Lectura de productos.json (lo edita el panel) ---------- */
+/* ---------- Lectura del catálogo (datos/catalogo.json, lo edita el panel) ---------- */
 function rutaFoto(url) {
   url = String(url || "").trim();
   if (!url) return "";
@@ -232,30 +217,42 @@ function rutaFoto(url) {
   return /^https?:\/\//.test(url) || url.startsWith("img/") ? url : "";
 }
 
-function buscarCategoria(valor) {
-  const v = normalizar(valor);
-  const cat = CATEGORIAS.find((c) => normalizar(c.id) === v || normalizar(c.nombre) === v);
-  return cat ? cat.id : "";
-}
+// "Gomitas mágicas" → "gomitas-magicas" (sirve como identificador de la categoría)
+const aId = (t) => normalizar(t).replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "") || "categoria";
 
-async function cargarProductos() {
+async function cargarCatalogo() {
   $("#productGrid").innerHTML = `<p class="empty">Cargando productos…</p>`;
   try {
-    const resp = await fetch("productos.json", { cache: "no-cache" });
+    const resp = await fetch("datos/catalogo.json", { cache: "no-cache" });
     if (!resp.ok) throw new Error("HTTP " + resp.status);
     const datos = await resp.json();
-    productos = (Array.isArray(datos) ? datos : [])
-      .filter((p) => p && p.nombre && p.visible !== false)
-      .map((p) => ({
-        nombre: String(p.nombre),
-        cat: buscarCategoria(p.categoria),
-        desc: String(p.descripcion || ""),
-        precio: Number(p.precio) > 0 ? Math.round(Number(p.precio)) : null,
-        foto: rutaFoto(p.foto),
-      }));
+    const usados = new Set();
+    CATEGORIAS = [];
+    productos = [];
+    for (const c of Array.isArray(datos.categorias) ? datos.categorias : []) {
+      if (!c || !c.nombre || c.visible === false) continue;
+      let id = aId(c.nombre);
+      while (usados.has(id)) id += "-2";            // por si dos categorías se llaman igual
+      usados.add(id);
+      const img = rutaFoto(c.imagen);
+      CATEGORIAS.push({ id, nombre: String(c.nombre), img, esFoto: !!img && !img.startsWith("img/categorias/") });
+      for (const p of Array.isArray(c.productos) ? c.productos : []) {
+        if (!p || !p.nombre || p.visible === false) continue;
+        productos.push({
+          nombre: String(p.nombre),
+          cat: id,
+          desc: String(p.descripcion || ""),
+          precio: Number(p.precio) > 0 ? Math.round(Number(p.precio)) : null,
+          foto: rutaFoto(p.foto),
+        });
+      }
+    }
+    catPorId = Object.fromEntries(CATEGORIAS.map((c) => [c.id, c]));
+    pintarCategorias();
+    pintarChips();
     pintarProductos();
   } catch (err) {
-    console.error("No se pudo leer productos.json:", err);
+    console.error("No se pudo leer el catálogo:", err);
     $("#emptyMsg").hidden = true;
     $("#productGrid").innerHTML = `<p class="empty">No pudimos cargar el catálogo en este momento. ¡Escríbenos por WhatsApp y te ayudamos!</p>`;
   }
@@ -272,9 +269,7 @@ $("#productGrid").addEventListener("error", (e) => {
 }, true);
 
 $("#year").textContent = new Date().getFullYear();
-pintarCategorias();
-pintarChips();
-cargarProductos();
+cargarCatalogo();
 
 /* ---------- Textura animada de fondo (toda la página) ----------
    Una sola textura continua, inspirada en el cuadro del local, que fluye
@@ -356,38 +351,49 @@ cargarProductos();
     if (!gl.getShaderParameter(s, gl.COMPILE_STATUS)) { console.warn(gl.getShaderInfoLog(s)); return null; }
     return s;
   }
-  const vs = shader(gl.VERTEX_SHADER, vert), fs = shader(gl.FRAGMENT_SHADER, frag);
-  if (!vs || !fs) return;
-  const prog = gl.createProgram(); gl.attachShader(prog, vs); gl.attachShader(prog, fs); gl.linkProgram(prog);
-  if (!gl.getProgramParameter(prog, gl.LINK_STATUS)) return;
-  gl.useProgram(prog);
-  gl.bindBuffer(gl.ARRAY_BUFFER, gl.createBuffer());
-  gl.bufferData(gl.ARRAY_BUFFER, new Float32Array([-1, -1, 3, -1, -1, 3]), gl.STATIC_DRAW);
-  const loc = gl.getAttribLocation(prog, "p");
-  gl.enableVertexAttribArray(loc); gl.vertexAttribPointer(loc, 2, gl.FLOAT, false, 0, 0);
-  const u = (n) => gl.getUniformLocation(prog, n);
-  const uRes = u("uRes"), uTime = u("uTime"), uEscala = u("uEscala"), uScroll = u("uScroll"), uHeroFin = u("uHeroFin"), uVelo = u("uVelo");
+  // Prepara el programa de dibujo. Se vuelve a llamar si el celular "pierde" el
+  // contexto gráfico (pasa en móviles al cambiar de app o con poca memoria).
+  let uRes, uTime, uEscala, uScroll, uHeroFin, uVelo;
+  function preparar() {
+    gl.getExtension("OES_standard_derivatives");
+    const vs = shader(gl.VERTEX_SHADER, vert), fs = shader(gl.FRAGMENT_SHADER, frag);
+    if (!vs || !fs) return false;
+    const prog = gl.createProgram(); gl.attachShader(prog, vs); gl.attachShader(prog, fs); gl.linkProgram(prog);
+    if (!gl.getProgramParameter(prog, gl.LINK_STATUS)) return false;
+    gl.useProgram(prog);
+    gl.bindBuffer(gl.ARRAY_BUFFER, gl.createBuffer());
+    gl.bufferData(gl.ARRAY_BUFFER, new Float32Array([-1, -1, 3, -1, -1, 3]), gl.STATIC_DRAW);
+    const loc = gl.getAttribLocation(prog, "p");
+    gl.enableVertexAttribArray(loc); gl.vertexAttribPointer(loc, 2, gl.FLOAT, false, 0, 0);
+    const u = (n) => gl.getUniformLocation(prog, n);
+    uRes = u("uRes"); uTime = u("uTime"); uEscala = u("uEscala"); uScroll = u("uScroll"); uHeroFin = u("uHeroFin"); uVelo = u("uVelo");
+    canvas.width = canvas.height = 0;            // obliga a recalcular el tamaño en el próximo cuadro
+    return true;
+  }
+  if (!preparar()) return;
 
-  /* Calidad automática: empieza en el nivel más alto y, si el celular no
-     alcanza a dibujar fluido (menos de ~40 cuadros por segundo), baja de nivel.
-     El nivel se recuerda en ese celular para la próxima visita. */
+  /* Calidad automática: si el celular no alcanza a dibujar fluido, baja de nivel;
+     si después va sobrado (por ejemplo, al quitar el ahorro de batería), vuelve a subir.
+     - Ignora las pausas (cambiar de app, pestaña oculta) y los primeros segundos de carga.
+     - Un celular limitado a 30 cuadros/s (ahorro de batería) NO cuenta como lento.
+     - Solo deja la textura quieta si el celular va de verdad muy lento (menos de ~12 cuadros/s). */
   const NIVELES = [
-    { escala: 0.6,  salto: 1 },   // 0: máxima calidad, 60 cuadros/s
+    { escala: 0.6,  salto: 1 },   // 0: máxima calidad
     { escala: 0.45, salto: 1 },   // 1: menos resolución
-    { escala: 0.4,  salto: 2 },   // 2: textura a 30 cuadros/s (se mueve lento, casi no se nota)
-    { escala: 0.32, salto: 3 },   // 3: 20 cuadros/s
+    { escala: 0.4,  salto: 2 },   // 2: textura a la mitad de cuadros (se mueve lento, casi no se nota)
+    { escala: 0.32, salto: 3 },   // 3: un tercio de cuadros
     { escala: 0.3,  salto: 0 },   // 4: textura quieta (solo se redibuja al hacer scroll)
   ];
-  const CLAVE = "cannabicos_nivel_textura";
+  const CLAVE = "cannabicos_textura_v2";   // (clave nueva: descarta niveles mal guardados por la versión anterior)
   let nivel = 0;
-  try { nivel = Math.min(NIVELES.length - 1, Math.max(0, parseInt(localStorage.getItem(CLAVE), 10) || 0)); } catch (e) {}
+  try { nivel = Math.min(2, Math.max(0, (parseInt(localStorage.getItem(CLAVE), 10) || 0) - 1)); } catch (e) {}  // arranca un nivel arriba de lo recordado, por si mejoró
   if (window.__ESCALA_TEXTURA) NIVELES[nivel] = { escala: window.__ESCALA_TEXTURA, salto: 1 };
   const quieto = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
   window.__textura.nivel = nivel;
-  let raf = 0, cuadro = 0, ultimoScroll = -1, tiempoCongelado = 0;
+  let raf = 0, cuadro = 0, ultimoScroll = -1, tiempoCongelado = 0, perdido = false;
   const t0 = performance.now(), offset = Math.random() * 100;
   // medición de fluidez
-  let medidos = 0, sumaMs = 0, ultimoRaf = 0;
+  let medidos = 0, sumaMs = 0, ultimoRaf = 0, malas = 0, buenas = 0, calentarHasta = performance.now() + 2500;
 
   function ajustar() {
     const esc = NIVELES[nivel].escala;
@@ -396,6 +402,7 @@ cargarProductos();
     if (canvas.width !== w || canvas.height !== h) { canvas.width = w; canvas.height = h; gl.viewport(0, 0, w, h); }
   }
   function dibujar(ahora) {
+    if (perdido) return;
     ajustar();
     const animada = !quieto && NIVELES[nivel].salto > 0;
     if (animada) tiempoCongelado = (ahora - t0) / 1000;
@@ -412,20 +419,36 @@ cargarProductos();
       document.documentElement.classList.add("textura-viva");
     }
   }
+  function cambiarNivel(n) {
+    nivel = n;
+    window.__textura.nivel = nivel;
+    try { localStorage.setItem(CLAVE, String(nivel)); } catch (e) {}
+  }
   function medir(ahora) {
-    if (ultimoRaf) { sumaMs += ahora - ultimoRaf; medidos++; }
+    const dt = ultimoRaf ? ahora - ultimoRaf : 0;
     ultimoRaf = ahora;
-    if (medidos >= 90) {                         // ~1,5 s de muestra
-      const promedio = sumaMs / medidos;
-      if (promedio > 24 && nivel < NIVELES.length - 1) {
-        nivel++;
-        window.__textura.nivel = nivel;
-        try { localStorage.setItem(CLAVE, String(nivel)); } catch (e) {}
-      }
-      medidos = 0; sumaMs = 0;
+    if (ahora < calentarHasta || dt <= 0) return;
+    if (dt > 250) { calentarHasta = ahora + 1500; return; }   // fue una pausa (otra app, pestaña oculta): no cuenta
+    sumaMs += dt; medidos++;
+    if (medidos < 60) return;
+    const promedio = sumaMs / medidos;
+    medidos = 0; sumaMs = 0;
+    // > 42 ms ≈ menos de 24 cuadros/s (30 cuadros/s por ahorro de batería = 33 ms, eso está bien)
+    const muyLento = promedio > 85;          // < ~12 cuadros/s
+    const lento = promedio > 42;
+    if (lento) { malas++; buenas = 0; } else if (promedio < 20) { buenas++; malas = 0; } else { malas = 0; buenas = 0; }
+    if (malas >= 2) {                        // dos mediciones seguidas lentas
+      malas = 0;
+      const tope = muyLento ? NIVELES.length - 1 : NIVELES.length - 2;   // la textura quieta solo si va muy lento
+      if (nivel < tope) cambiarNivel(nivel + 1);
+    } else if (buenas >= 3 && nivel > 0) {   // va sobrado: sube la calidad otra vez
+      buenas = 0;
+      cambiarNivel(nivel - 1);
     }
   }
   function bucle(ahora) {
+    raf = 0;
+    if (document.hidden || perdido) return;
     medir(ahora);
     const salto = NIVELES[nivel].salto;
     cuadro++;
@@ -434,11 +457,29 @@ cargarProductos();
       dibujar(ahora);
       window.__textura.cuadros++;
     }
-    raf = !document.hidden ? requestAnimationFrame(bucle) : 0;
+    raf = requestAnimationFrame(bucle);
   }
-  function pedirDibujo() { if (!raf) raf = requestAnimationFrame((a) => { raf = 0; quieto ? dibujar(a) : (ultimoRaf = 0, bucle(a)); }); }
+  function pedirDibujo() {
+    if (raf || perdido) return;
+    raf = requestAnimationFrame((a) => { raf = 0; if (quieto) dibujar(a); else { ultimoRaf = 0; calentarHasta = a + 1500; bucle(a); } });
+  }
 
-  // Pausa cuando la pestaña está oculta (ahorra batería)
+  // El celular puede "perder" el contexto gráfico (al cambiar de app o con poca memoria).
+  // Antes la textura se quedaba congelada; ahora se recupera sola, y si no se puede,
+  // vuelve a mostrar la imagen fija de respaldo.
+  canvas.addEventListener("webglcontextlost", (e) => {
+    e.preventDefault();
+    perdido = true;
+    if (raf) { cancelAnimationFrame(raf); raf = 0; }
+    canvas.classList.remove("ready");
+    document.documentElement.classList.remove("textura-viva");
+  });
+  canvas.addEventListener("webglcontextrestored", () => {
+    perdido = false;
+    if (preparar()) pedirDibujo();
+  });
+
+  // Pausa cuando la pestaña está oculta (ahorra batería) y retoma al volver
   document.addEventListener("visibilitychange", () => { if (!document.hidden) pedirDibujo(); });
   // Sin animación (reducir movimiento): solo se redibuja al hacer scroll o cambiar tamaño
   window.addEventListener("scroll", () => { if (quieto) pedirDibujo(); }, { passive: true });

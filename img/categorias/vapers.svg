@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 240 240">
+<g transform="translate(6 46) scale(.95)"><path d="M24 118 C18 100 8 84 8 60 C8 28 32 8 58 8 C80 8 92 22 92 40 L100 54 C102 58 98 60 94 60 L94 64 C97 66 97 70 94 72 C96 76 94 82 88 84 C84 90 76 92 66 92 L66 118 Z" fill="#0F3313"/>
+  <path d="M60 40 q7 -5 14 0" fill="none" stroke="#FFFFFF" stroke-width="5" stroke-linecap="round"/></g>
+<path d="M120 112 C104 112 98 98 106 90 C100 78 112 64 126 70 C128 54 152 50 162 62 C172 48 198 52 200 70 C218 70 226 88 214 98 C224 112 210 128 194 120 C186 134 160 134 154 122 C144 132 122 128 120 112 Z" fill="#F38323"/>
+<circle cx="104" cy="110" r="6" fill="#F38323"/>
+<path d="M138 84 Q146 76 158 80" fill="none" stroke="#FFFFFF" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/>
+<g transform="rotate(-12 170 186)">
+  <rect x="150" y="146" width="40" height="74" rx="14" fill="#0F3313"/>
+  <path d="M158 148 L162 126 L178 126 L182 148 Z" fill="#0F3313"/>
+  <rect x="158" y="164" width="24" height="24" rx="6" fill="#3E9B3F"/>
+  <path d="M160 200 L160 210" fill="none" stroke="#FFFFFF" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
+</g>
+<path d="M40 190 Q41.8 198.2 50 200 Q41.8 201.8 40 210 Q38.2 201.8 30 200 Q38.2 198.2 40 190Z" fill="#3E9B3F"/>
+</svg>
