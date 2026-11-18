@@ -99,40 +99,6 @@
       ]
     },
     {
-      "nombre": "Gomitas mágicas",
-      "imagen": "/img/categorias/gomitas.svg",
-      "visible": true,
-      "productos": [
-        {
-          "nombre": "HAZE",
-          "descripcion": "50mg de THC por cada gomita, valor por unidad ",
-          "precio": 8000,
-          "foto": "/img/productos/IMG_8413.jpeg",
-          "visible": true
-        },
-        {
-          "nombre": "Strike",
-          "descripcion": "250mg de THC por gomita, valor por unidad ",
-          "precio": 10000,
-          "foto": "/img/productos/IMG_8418.jpeg",
-          "visible": true
-        },
-        {
-          "nombre": "Hidden Hills ",
-          "descripcion": "Las gomas más potentes🔥 disfruta de los 500mg que contiene cada gomita y elévate a otro nivel (precio por unidad, no el frasco completo) ",
-          "precio": 15000,
-          "foto": "/img/productos/IMG_8912.jpeg",
-          "visible": true
-        },
-        {
-          "nombre": "Sumo ",
-          "descripcion": "420mg de pura diversión en cada goma (precio por unidad, no el frasco completo) ",
-          "foto": "/img/productos/IMG_7503.jpeg",
-          "visible": true
-        }
-      ]
-    },
-    {
       "nombre": "Palas dosificadoras",
       "imagen": "/img/categorias/palas.svg",
       "visible": true,
@@ -155,38 +121,27 @@
     {
       "nombre": "Armadores",
       "imagen": "/img/categorias/armadores.svg",
-      "visible": true,
-      "productos": []
+      "visible": true
     },
     {
       "nombre": "Rascadores",
       "imagen": "/img/categorias/rascadores.svg",
-      "visible": true,
-      "productos": []
-    },
-    {
-      "nombre": "Lentes de contacto",
-      "imagen": "/img/categorias/lentes.svg",
-      "visible": true,
-      "productos": []
+      "visible": true
     },
     {
       "nombre": "Filtros",
       "imagen": "/img/categorias/filtros.svg",
-      "visible": true,
-      "productos": []
+      "visible": true
     },
     {
       "nombre": "Bandejas",
       "imagen": "/img/categorias/bandejas.svg",
-      "visible": true,
-      "productos": []
+      "visible": true
     },
     {
       "nombre": "Crema para tatuajes",
       "imagen": "/img/categorias/crema-tatuajes.svg",
-      "visible": true,
-      "productos": []
+      "visible": true
     },
     {
       "nombre": "Cueros",
@@ -204,8 +159,7 @@
     {
       "nombre": "Vaper nicotina",
       "imagen": "/img/categorias/vapers.svg",
-      "visible": true,
-      "productos": []
+      "visible": true
     },
     {
       "nombre": "Pipas",
@@ -304,6 +258,45 @@
           "visible": false
         }
       ]
+    },
+    {
+      "nombre": "Gomitas mágicas",
+      "imagen": "/img/categorias/gomitas.svg",
+      "visible": false,
+      "productos": [
+        {
+          "nombre": "HAZE",
+          "descripcion": "50mg de THC por cada gomita, valor por unidad ",
+          "precio": 8000,
+          "foto": "/img/productos/IMG_8413.jpeg",
+          "visible": true
+        },
+        {
+          "nombre": "Strike",
+          "descripcion": "250mg de THC por gomita, valor por unidad ",
+          "precio": 10000,
+          "foto": "/img/productos/IMG_8418.jpeg",
+          "visible": true
+        },
+        {
+          "nombre": "Hidden Hills ",
+          "descripcion": "Las gomas más potentes🔥 disfruta de los 500mg que contiene cada gomita y elévate a otro nivel (precio por unidad, no el frasco completo) ",
+          "precio": 15000,
+          "foto": "/img/productos/IMG_8912.jpeg",
+          "visible": true
+        },
+        {
+          "nombre": "Sumo ",
+          "descripcion": "420mg de pura diversión en cada goma (precio por unidad, no el frasco completo) ",
+          "foto": "/img/productos/IMG_7503.jpeg",
+          "visible": true
+        }
+      ]
+    },
+    {
+      "nombre": "Lentes de contacto",
+      "imagen": "/img/categorias/lentes.svg",
+      "visible": false
     }
   ]
 }
