@@ -150,6 +150,20 @@
           "precio": 12000,
           "foto": "/img/productos/IMG_9063-2.jpeg",
           "visible": true
+        },
+        {
+          "nombre": "Leon fumeta",
+          "descripcion": "Rascador de 4 pisos fabricado en plástico",
+          "precio": 12000,
+          "foto": "/img/productos/IMG_9065-1.jpeg",
+          "visible": true
+        },
+        {
+          "nombre": "Alien ",
+          "descripcion": "Rascador de 4 pisos fabricado en plástico",
+          "precio": 12000,
+          "foto": "/img/productos/IMG_9066.jpeg",
+          "visible": true
         }
       ]
     },
