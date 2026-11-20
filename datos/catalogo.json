@@ -121,7 +121,16 @@
     {
       "nombre": "Armadores",
       "imagen": "/img/categorias/armadores.svg",
-      "visible": true
+      "visible": true,
+      "productos": [
+        {
+          "nombre": "Armador #8",
+          "descripcion": "Fabricado en plástico, este armador es compatible con cueros #8",
+          "precio": 8000,
+          "foto": "/img/productos/IMG_9060-1.jpeg",
+          "visible": true
+        }
+      ]
     },
     {
       "nombre": "Rascadores",
