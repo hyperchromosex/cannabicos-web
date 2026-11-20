@@ -142,7 +142,16 @@
     {
       "nombre": "Rascadores",
       "imagen": "/img/categorias/rascadores.svg",
-      "visible": true
+      "visible": true,
+      "productos": [
+        {
+          "nombre": "Hongo 🍄 ",
+          "descripcion": "Rascador de 4 pisos fabricado en plástico",
+          "precio": 12000,
+          "foto": "/img/productos/IMG_9063-2.jpeg",
+          "visible": true
+        }
+      ]
     },
     {
       "nombre": "Filtros",
