@@ -129,6 +129,13 @@
           "precio": 8000,
           "foto": "/img/productos/IMG_9060-1.jpeg",
           "visible": true
+        },
+        {
+          "nombre": "King size 👑",
+          "descripcion": "Armador fabricado en plástico, compatible con cueros King size ",
+          "precio": 10000,
+          "foto": "/img/productos/IMG_9056-2.jpeg",
+          "visible": true
         }
       ]
     },
