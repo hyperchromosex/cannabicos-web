@@ -164,6 +164,27 @@
           "precio": 12000,
           "foto": "/img/productos/IMG_9066.jpeg",
           "visible": true
+        },
+        {
+          "nombre": "Colores 1",
+          "descripcion": "Rascador de 4 pisos fabricado en plástico",
+          "precio": 15000,
+          "foto": "/img/productos/IMG_9067-1.jpeg",
+          "visible": true
+        },
+        {
+          "nombre": "Colores 2",
+          "descripcion": "Rascador de 4 pisos fabricado en plástico",
+          "precio": 15000,
+          "foto": "/img/productos/IMG_9068.jpeg",
+          "visible": true
+        },
+        {
+          "nombre": "Colores 3 ",
+          "descripcion": "Rascador de 4 pisos fabricado en plástico",
+          "precio": 15000,
+          "foto": "/img/productos/IMG_9069.jpeg",
+          "visible": true
         }
       ]
     },
