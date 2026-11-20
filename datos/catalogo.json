@@ -192,6 +192,13 @@
           "precio": 20000,
           "foto": "/img/productos/IMG_9071-1.jpeg",
           "visible": true
+        },
+        {
+          "nombre": "Calavera 💀 🔥 ",
+          "descripcion": "Rascador de 1 piso, fabricado en metal con recubrimiento plástico ",
+          "precio": 20000,
+          "foto": "/img/productos/IMG_9072.jpeg",
+          "visible": true
         }
       ]
     },
