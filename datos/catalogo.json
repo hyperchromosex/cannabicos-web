@@ -199,6 +199,13 @@
           "precio": 20000,
           "foto": "/img/productos/IMG_9072.jpeg",
           "visible": true
+        },
+        {
+          "nombre": "Marley 1 ",
+          "descripcion": "Rascador fabricado en metal con cobertura de plástico ",
+          "precio": 20000,
+          "foto": "/img/productos/IMG_9074-1.jpeg",
+          "visible": true
         }
       ]
     },
