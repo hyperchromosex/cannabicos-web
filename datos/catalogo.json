@@ -234,6 +234,13 @@
           "precio": 4000,
           "foto": "/img/productos/IMG_8016-1.jpeg",
           "visible": true
+        },
+        {
+          "nombre": "OCB ",
+          "descripcion": "Filtro tamaño regular (7,5mm) fabricados en algodón, 100filtros por paquete",
+          "precio": 16000,
+          "foto": "/img/productos/879BF5DB-156B-4102-873C-504D1C77B302-1.jpeg",
+          "visible": true
         }
       ]
     },
