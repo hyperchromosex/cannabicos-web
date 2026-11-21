@@ -252,7 +252,15 @@
     {
       "nombre": "Crema para tatuajes",
       "imagen": "/img/categorias/crema-tatuajes.svg",
-      "visible": true
+      "visible": true,
+      "productos": [
+        {
+          "nombre": "Protón",
+          "precio": 10000,
+          "foto": "/img/productos/IMG_9090.jpeg",
+          "visible": true
+        }
+      ]
     },
     {
       "nombre": "Cueros",
