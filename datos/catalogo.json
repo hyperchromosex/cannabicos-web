@@ -226,7 +226,16 @@
     {
       "nombre": "Filtros",
       "imagen": "/img/categorias/filtros.svg",
-      "visible": true
+      "visible": true,
+      "productos": [
+        {
+          "nombre": "Hornet ",
+          "descripcion": "Filtros fabricados en cartón, marca Hornet ",
+          "precio": 4000,
+          "foto": "/img/productos/IMG_8016-1.jpeg",
+          "visible": true
+        }
+      ]
     },
     {
       "nombre": "Bandejas",
