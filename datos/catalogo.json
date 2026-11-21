@@ -213,6 +213,13 @@
           "precio": 20000,
           "foto": "/img/productos/IMG_9075-1.jpeg",
           "visible": true
+        },
+        {
+          "nombre": "Dólar ",
+          "descripcion": "Rascador fabricado en metal, 2 pisos ",
+          "precio": 20000,
+          "foto": "/img/productos/IMG_9077-4.jpeg",
+          "visible": true
         }
       ]
     },
