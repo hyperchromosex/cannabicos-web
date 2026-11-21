@@ -259,6 +259,13 @@
           "precio": 10000,
           "foto": "/img/productos/IMG_9090.jpeg",
           "visible": true
+        },
+        {
+          "nombre": "Vitamina A+D",
+          "descripcion": "Crema para tatuajes con vitamina A+D ",
+          "precio": 5000,
+          "foto": "/img/productos/IMG_9091.jpeg",
+          "visible": true
         }
       ]
     },
