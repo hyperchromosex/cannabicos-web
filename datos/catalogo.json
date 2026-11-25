@@ -293,6 +293,13 @@
           "precio": 4000,
           "foto": "/img/productos/IMG_9529.jpeg",
           "visible": true
+        },
+        {
+          "nombre": "Euro 💶",
+          "descripcion": "Papeles para armar con estampado de Euro. Fabricados a partir de tintas vegetales ",
+          "precio": 10000,
+          "foto": "/img/productos/IMG_9531.jpeg",
+          "visible": true
         }
       ]
     },
