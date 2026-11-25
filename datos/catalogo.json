@@ -396,6 +396,13 @@
           "precio": 10000,
           "foto": "/img/productos/IMG_8994-1.jpeg",
           "visible": true
+        },
+        {
+          "nombre": "Bate tornasol delgado ",
+          "descripcion": "Fabricadas en metal, ideales para fumar pequeñas cantidades ",
+          "precio": 10000,
+          "foto": "/img/productos/IMG_8996-1.jpeg",
+          "visible": true
         }
       ]
     },
