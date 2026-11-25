@@ -300,6 +300,20 @@
           "precio": 10000,
           "foto": "/img/productos/IMG_9531.jpeg",
           "visible": true
+        },
+        {
+          "nombre": "Sabores ",
+          "descripcion": "Papeles para armar de la marca BLONES. Preguntar por los sabores disponibles ",
+          "precio": 4000,
+          "foto": "/img/productos/IMG_9532.jpeg",
+          "visible": true
+        },
+        {
+          "nombre": "Extra largo ",
+          "descripcion": "Papeles extra largos marca BLONES",
+          "precio": 5000,
+          "foto": "/img/productos/IMG_9533.jpeg",
+          "visible": true
         }
       ]
     },
