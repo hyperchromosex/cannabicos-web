@@ -382,6 +382,13 @@
           "precio": 10000,
           "foto": "/img/productos/IMG_8998.jpeg",
           "visible": true
+        },
+        {
+          "nombre": "Matanceras relieve ",
+          "descripcion": "Fabricadas en vidrio con relieves en colores, ideales para fumar pequeñas cantidades ",
+          "precio": 15000,
+          "foto": "/img/productos/IMG_8993-1.jpeg",
+          "visible": true
         }
       ]
     },
