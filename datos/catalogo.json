@@ -349,9 +349,9 @@
           "visible": true
         },
         {
-          "nombre": "Pipa de madera",
-          "descripcion": "Clásica y resistente.",
-          "precio": 35000,
+          "nombre": "Bate colores",
+          "descripcion": "Bates fabricados en metal con boquilla de acrílico",
+          "precio": 10000,
           "foto": "/img/productos/IMG_8747.jpeg",
           "visible": true
         },
