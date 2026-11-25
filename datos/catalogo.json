@@ -389,6 +389,13 @@
           "precio": 15000,
           "foto": "/img/productos/IMG_8993-1.jpeg",
           "visible": true
+        },
+        {
+          "nombre": "Bate tornasol",
+          "descripcion": "Fabricadas en metal con boquilla de acrílico",
+          "precio": 10000,
+          "foto": "/img/productos/IMG_8994-1.jpeg",
+          "visible": true
         }
       ]
     },
