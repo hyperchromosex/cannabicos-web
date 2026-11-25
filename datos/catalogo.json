@@ -499,7 +499,16 @@
     {
       "nombre": "Lentes de contacto",
       "imagen": "/img/categorias/lentes.svg",
-      "visible": false
+      "visible": false,
+      "productos": [
+        {
+          "nombre": "Lentes ANY DAY",
+          "descripcion": "Lentes de contacto marca AnyDay, fabricados en hidrogel de silicona, preguntar por disponibilidad de colores ",
+          "precio": 55000,
+          "foto": "/img/productos/IMG_9535.jpeg",
+          "visible": true
+        }
+      ]
     }
   ]
 }
