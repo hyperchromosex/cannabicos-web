@@ -286,6 +286,13 @@
           "precio": 4000,
           "foto": "/img/productos/IMG_9096.jpeg",
           "visible": true
+        },
+        {
+          "nombre": "Ocb orgánico",
+          "descripcion": "Papeles para armar #8, orgánicos, fabricados a partir de cáñamo",
+          "precio": 4000,
+          "foto": "/img/productos/IMG_9529.jpeg",
+          "visible": true
         }
       ]
     },
