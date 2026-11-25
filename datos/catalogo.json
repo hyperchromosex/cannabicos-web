@@ -361,6 +361,13 @@
           "precio": 15000,
           "foto": "/img/productos/IMG_8163.jpeg",
           "visible": true
+        },
+        {
+          "nombre": "Bates Baked bunny mini",
+          "descripcion": "Bates fabricados en metal, estampados femeninos y color rosado, ideal si te gusta fumar menos y deseas evitar olores tan evidentes",
+          "precio": 10000,
+          "foto": "/img/productos/IMG_8992-1.jpeg",
+          "visible": true
         }
       ]
     },
