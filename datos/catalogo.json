@@ -99,6 +99,62 @@
       ]
     },
     {
+      "nombre": "Baterías para destilados",
+      "imagen": "/img/categorias/baterias.svg",
+      "visible": true,
+      "productos": [
+        {
+          "nombre": "Bull",
+          "descripcion": "900MAH de pura potencia, cargador tipo C y 3 voltajes intercambiables. Preguntar por la disponibilidad de colores ",
+          "precio": 40000,
+          "foto": "/img/productos/IMG_8893-1.jpeg",
+          "visible": true
+        },
+        {
+          "nombre": "Discretas ",
+          "descripcion": "Baterías con 3 voltajes intercambiables, tu cápsula queda totalmente cubierta y disimulada, incluye cargador tipo C. (Precio solo de la batería) ",
+          "precio": 70000,
+          "foto": "/img/productos/IMG_8663.jpeg",
+          "visible": true
+        },
+        {
+          "nombre": "Cookies Rick & Morty ",
+          "descripcion": "Batería cilíndrica con estampados de Rick & Morty, incluye cargador tipo C y cuenta con 3 voltajes intercambiables ",
+          "precio": 45000,
+          "foto": "/img/productos/IMG_8890.jpeg",
+          "visible": true
+        },
+        {
+          "nombre": "Discreta tipo ZIP",
+          "descripcion": "Batería discreta, en tamaño más pequeño para mayor discreción, incluye cargador tipo C",
+          "precio": 70000,
+          "foto": "/img/productos/IMG_8665-1.jpeg",
+          "visible": true
+        },
+        {
+          "nombre": "Cookies tipo lapicero ",
+          "descripcion": "Batería tipo lapicero, cargador tipo USB y tres voltajes intercambiables",
+          "precio": 35000,
+          "foto": "/img/productos/IMG_6836-2.jpeg",
+          "visible": true
+        },
+        {
+          "nombre": "NOVA ",
+          "descripcion": "Batería con pantalla digital, 5 voltajes intercambiables y puerto tipo C. (El valor declarado no incluye la cápsula)",
+          "precio": 60000,
+          "foto": "/img/productos/IMG_8806-1.jpeg",
+          "visible": true
+        },
+        {
+          "nombre": "Brass knuckles ",
+          "descripcion": "Batería con 900MAH y cargador tipo c. Preguntar por disponibilidad de colores ",
+          "precio": 40000,
+          "foto": "/img/productos/IMG_7750-1.jpeg",
+          "visible": false
+        }
+      ]
+    },
+    {
       "nombre": "Palas dosificadoras",
       "imagen": "/img/categorias/palas.svg",
       "visible": true,
@@ -224,52 +280,6 @@
       ]
     },
     {
-      "nombre": "Filtros",
-      "imagen": "/img/categorias/filtros.svg",
-      "visible": true,
-      "productos": [
-        {
-          "nombre": "Hornet ",
-          "descripcion": "Filtros fabricados en cartón, marca Hornet ",
-          "precio": 4000,
-          "foto": "/img/productos/IMG_8016-1.jpeg",
-          "visible": true
-        },
-        {
-          "nombre": "OCB ",
-          "descripcion": "Filtro tamaño regular (7,5mm) fabricados en algodón, 100filtros por paquete",
-          "precio": 16000,
-          "foto": "/img/productos/879BF5DB-156B-4102-873C-504D1C77B302-1.jpeg",
-          "visible": true
-        }
-      ]
-    },
-    {
-      "nombre": "Bandejas",
-      "imagen": "/img/categorias/bandejas.svg",
-      "visible": false
-    },
-    {
-      "nombre": "Crema para tatuajes",
-      "imagen": "/img/categorias/crema-tatuajes.svg",
-      "visible": true,
-      "productos": [
-        {
-          "nombre": "Protón",
-          "precio": 10000,
-          "foto": "/img/productos/IMG_9090.jpeg",
-          "visible": true
-        },
-        {
-          "nombre": "Vitamina A+D",
-          "descripcion": "Crema para tatuajes con vitamina A+D ",
-          "precio": 5000,
-          "foto": "/img/productos/IMG_9091.jpeg",
-          "visible": true
-        }
-      ]
-    },
-    {
       "nombre": "Cueros",
       "imagen": "/img/categorias/cueros.svg",
       "visible": true,
@@ -318,9 +328,55 @@
       ]
     },
     {
+      "nombre": "Filtros",
+      "imagen": "/img/categorias/filtros.svg",
+      "visible": true,
+      "productos": [
+        {
+          "nombre": "Hornet ",
+          "descripcion": "Filtros fabricados en cartón, marca Hornet ",
+          "precio": 4000,
+          "foto": "/img/productos/IMG_8016-1.jpeg",
+          "visible": true
+        },
+        {
+          "nombre": "OCB ",
+          "descripcion": "Filtro tamaño regular (7,5mm) fabricados en algodón, 100filtros por paquete",
+          "precio": 16000,
+          "foto": "/img/productos/879BF5DB-156B-4102-873C-504D1C77B302-1.jpeg",
+          "visible": true
+        }
+      ]
+    },
+    {
       "nombre": "Vaper nicotina",
       "imagen": "/img/categorias/vapers.svg",
       "visible": true
+    },
+    {
+      "nombre": "Bandejas",
+      "imagen": "/img/categorias/bandejas.svg",
+      "visible": false
+    },
+    {
+      "nombre": "Crema para tatuajes",
+      "imagen": "/img/categorias/crema-tatuajes.svg",
+      "visible": true,
+      "productos": [
+        {
+          "nombre": "Protón",
+          "precio": 10000,
+          "foto": "/img/productos/IMG_9090.jpeg",
+          "visible": true
+        },
+        {
+          "nombre": "Vitamina A+D",
+          "descripcion": "Crema para tatuajes con vitamina A+D ",
+          "precio": 5000,
+          "foto": "/img/productos/IMG_9091.jpeg",
+          "visible": true
+        }
+      ]
     },
     {
       "nombre": "Pipas",
@@ -403,62 +459,6 @@
           "precio": 10000,
           "foto": "/img/productos/IMG_8996-1.jpeg",
           "visible": true
-        }
-      ]
-    },
-    {
-      "nombre": "Baterías para destilados",
-      "imagen": "/img/categorias/baterias.svg",
-      "visible": true,
-      "productos": [
-        {
-          "nombre": "Bull",
-          "descripcion": "900MAH de pura potencia, cargador tipo C y 3 voltajes intercambiables. Preguntar por la disponibilidad de colores ",
-          "precio": 40000,
-          "foto": "/img/productos/IMG_8893-1.jpeg",
-          "visible": true
-        },
-        {
-          "nombre": "Discretas ",
-          "descripcion": "Baterías con 3 voltajes intercambiables, tu cápsula queda totalmente cubierta y disimulada, incluye cargador tipo C. (Precio solo de la batería) ",
-          "precio": 70000,
-          "foto": "/img/productos/IMG_8663.jpeg",
-          "visible": true
-        },
-        {
-          "nombre": "Cookies Rick & Morty ",
-          "descripcion": "Batería cilíndrica con estampados de Rick & Morty, incluye cargador tipo C y cuenta con 3 voltajes intercambiables ",
-          "precio": 45000,
-          "foto": "/img/productos/IMG_8890.jpeg",
-          "visible": true
-        },
-        {
-          "nombre": "Discreta tipo ZIP",
-          "descripcion": "Batería discreta, en tamaño más pequeño para mayor discreción, incluye cargador tipo C",
-          "precio": 70000,
-          "foto": "/img/productos/IMG_8665-1.jpeg",
-          "visible": true
-        },
-        {
-          "nombre": "Cookies tipo lapicero ",
-          "descripcion": "Batería tipo lapicero, cargador tipo USB y tres voltajes intercambiables",
-          "precio": 35000,
-          "foto": "/img/productos/IMG_6836-2.jpeg",
-          "visible": true
-        },
-        {
-          "nombre": "NOVA ",
-          "descripcion": "Batería con pantalla digital, 5 voltajes intercambiables y puerto tipo C. (El valor declarado no incluye la cápsula)",
-          "precio": 60000,
-          "foto": "/img/productos/IMG_8806-1.jpeg",
-          "visible": true
-        },
-        {
-          "nombre": "Brass knuckles ",
-          "descripcion": "Batería con 900MAH y cargador tipo c. Preguntar por disponibilidad de colores ",
-          "precio": 40000,
-          "foto": "/img/productos/IMG_7750-1.jpeg",
-          "visible": false
         }
       ]
     },
