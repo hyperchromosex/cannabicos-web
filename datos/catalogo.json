@@ -368,6 +368,20 @@
           "precio": 10000,
           "foto": "/img/productos/IMG_8992-1.jpeg",
           "visible": true
+        },
+        {
+          "nombre": "Bates mini colores",
+          "descripcion": "Fabricados en metal con estampados tipo pintura ",
+          "precio": 10000,
+          "foto": "/img/productos/IMG_8997.jpeg",
+          "visible": true
+        },
+        {
+          "nombre": "Matancera vidrio",
+          "descripcion": "Matanceras marca HoneyPuff, ideales para fumar pequeñas cantidades y disfrutar del sabor original de tus flores ",
+          "precio": 10000,
+          "foto": "/img/productos/IMG_8998.jpeg",
+          "visible": true
         }
       ]
     },
