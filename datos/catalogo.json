@@ -247,7 +247,7 @@
     {
       "nombre": "Bandejas",
       "imagen": "/img/categorias/bandejas.svg",
-      "visible": true
+      "visible": false
     },
     {
       "nombre": "Crema para tatuajes",
@@ -278,6 +278,13 @@
           "nombre": "Fruitors",
           "descripcion": "Papeles para armar con sabores, preguntar por los sabores disponibles ",
           "foto": "/img/productos/99F7CEC8-AF19-4066-ADC2-8322C697290E-1.jpeg",
+          "visible": true
+        },
+        {
+          "nombre": "Ocb premium",
+          "descripcion": "Papeles para armar #8, carburación lenta ",
+          "precio": 4000,
+          "foto": "/img/productos/IMG_9096.jpeg",
           "visible": true
         }
       ]
