@@ -407,6 +407,13 @@
           "precio": 30000,
           "foto": "/img/productos/IMG_9549-1.jpeg",
           "visible": true
+        },
+        {
+          "nombre": "I JOY",
+          "descripcion": "5% de nicotina 10K puffs. Preguntar por disponibilidad de sabores ",
+          "precio": 25000,
+          "foto": "/img/productos/IMG_8845-2.jpeg",
+          "visible": true
         }
       ]
     },
