@@ -95,6 +95,20 @@
           "precio": 50000,
           "foto": "/img/productos/IMG_8918.jpeg",
           "visible": true
+        },
+        {
+          "nombre": "No cap",
+          "descripcion": "Destilado importado, live resin. Preguntar por cepas disponibles",
+          "precio": 50000,
+          "foto": "/img/productos/IMG_9366.jpeg",
+          "visible": true
+        },
+        {
+          "nombre": "DABWOODS ",
+          "descripcion": "Destilado con boquilla tipo madera, buena concentración de THC y terpenos ",
+          "precio": 50000,
+          "foto": "/img/productos/IMG_9365.jpeg",
+          "visible": true
         }
       ]
     },
