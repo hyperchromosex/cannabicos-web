@@ -428,6 +428,13 @@
           "precio": 30000,
           "foto": "/img/productos/IMG_8700.jpeg",
           "visible": true
+        },
+        {
+          "nombre": "Nexa",
+          "descripcion": "5% de nicotina, 35K puff, preguntar por los sabores disponibles ",
+          "precio": 30000,
+          "foto": "/img/productos/IMG_8788.jpeg",
+          "visible": true
         }
       ]
     },
