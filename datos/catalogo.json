@@ -421,6 +421,13 @@
           "precio": 30000,
           "foto": "/img/productos/IMG_8351-1.jpeg",
           "visible": true
+        },
+        {
+          "nombre": "EBCREATE",
+          "descripcion": "5% de nicotina, 40k Puff, preguntar por los ",
+          "precio": 30000,
+          "foto": "/img/productos/IMG_8700.jpeg",
+          "visible": true
         }
       ]
     },
