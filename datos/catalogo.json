@@ -399,7 +399,16 @@
     {
       "nombre": "Vaper nicotina",
       "imagen": "/img/categorias/vapers.svg",
-      "visible": true
+      "visible": true,
+      "productos": [
+        {
+          "nombre": "ROMO",
+          "descripcion": "5% de nicotina, 50K puffs. Preguntar por los sabores disponibles ",
+          "precio": 30000,
+          "foto": "/img/productos/IMG_9549-1.jpeg",
+          "visible": true
+        }
+      ]
     },
     {
       "nombre": "Bandejas",
